@@ -1,26 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 @import "tailwindcss";
 
 :root {
+  --primary: #00D9B8;
+  --dark: #1a2332;
+  --light-mint: #B8F5E8;
+  --accent: #FF4B7E;
   --background: #ffffff;
   --foreground: #171717;
 }
 
 @theme inline {
+  --color-primary: var(--primary);
+  --color-dark: var(--dark);
+  --color-light-mint: var(--light-mint);
+  --color-accent: var(--accent);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Noto Sans KR', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 3rem;
+  }
+}
+
+.footer-gradient {
+  background: linear-gradient(83deg, #CDFFEB 2.82%, #C3FFD9 9.61%, rgba(255, 255, 255, 0.00) 31.06%), 
+              linear-gradient(0deg, rgba(195, 255, 217, 0.50) 0%, rgba(195, 255, 217, 0.50) 100%), 
+              url('/images/footer_gradient_background.png') lightgray 50% / cover no-repeat;
+  background-blend-mode: normal, normal, hard-light;
 }
