@@ -13,8 +13,8 @@ export default function FeaturesSection() {
             className="mx-auto mb-4"
           />
           <Image
-            src="/images/My_Real_NETwork_Around_GRAM_moto.png"
-            alt="My_Real_NETwork_Around_GRAM"
+            src="/images/my_real_NETwork_Around_GRAM_moto.png"
+            alt="MyRealNETworkAroundGRAM_moto"
             width={400}
             height={40}
             className="mx-auto"
