@@ -29,8 +29,8 @@ export default function HeroSection() {
       <div className="relative z-10 container mx-auto px-4 text-center flex-1 flex items-center justify-center">
         <div className="max-w-4xl mx-auto">
           <Image
-            src="/images/소중한_사람들과_진짜_커뮤니케이션의_시작_title.png"
-            alt="소중한 사람들과 진짜 커뮤니케이션의 시작"
+            src="/images/The_Beginning_of_True_Communication_with_Precious_People_title.png"
+            alt="The_Beginning_of_True_Communication_with_Precious_People"
             width={800}
             height={200}
             className="mx-auto mb-8 w-full max-w-2xl"
@@ -44,7 +44,7 @@ export default function HeroSection() {
             >
               <Image
                 src="/images/google_play_button.png"
-                alt="Google Play에서 다운로드"
+                alt="Download from Google Play"
                 width={180}
                 height={60}
                 className="h-12 w-auto"
@@ -56,7 +56,7 @@ export default function HeroSection() {
             >
               <Image
                 src="/images/apple_store_button.png"
-                alt="App Store에서 다운로드"
+                alt="Download from App Store"
                 width={180}
                 height={60}
                 className="h-12 w-auto"
@@ -71,11 +71,11 @@ export default function HeroSection() {
         <button
           onClick={scrollToNext}
           className="inline-flex flex-col items-center text-white hover:text-[#00D9B8] transition-colors"
-          aria-label="아래로 스크롤"
+          aria-label="Scroll down"
         >
           <Image
             src="/images/scroll_down_icon.png"
-            alt="스크롤 다운"
+            alt="Scroll down"
             width={150}
             height={150}
             className="animate-bounce h-150px w-150px"

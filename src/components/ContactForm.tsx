@@ -62,15 +62,15 @@ export default function ContactForm() {
           <div className="text-center mb-12 flex flex-col items-center">
             <Image
               src="/images/munyehagi_image.png"
-              alt="문의하기 아이폰 화면"
+              alt="Contact_Form_iPhone_Screen"
               width={434.424}
               height={285.36}
               className="mx-auto mb-8 w-[434.424] h-[285.36]"
               style={{ aspectRatio: '434.424/285.36' }}
             />
             <Image
-              src="/images/빠른_상담_도와드리겠습니다_title.png"
-              alt="빠른 상담 도와드리겠습니다"
+              src="/images/Quick_Consultation_We_Can_Assist_You_title.png"
+              alt="Quick_Consultation_We_Can_Assist_You"
               width={400}
               height={60}
               className="mx-auto mb-6 w-400px h-60px"
@@ -138,8 +138,8 @@ export default function ContactForm() {
               />
               <label htmlFor="privacy" className="text-sm text-gray-700">
                 <Image
-                  src="/images/개인정보_수집_및_이용_동의_(필수)_text.png"
-                  alt="개인정보 수집 및 이용 동의 (필수)"
+                  src="/images/Privacy_Collection_and_Use_Agreement_text_agreement.png"
+                  alt="Privacy_Collection_and_Use_Agreement_text_agreement"
                   width={300}
                   height={20}
                   className="inline"
