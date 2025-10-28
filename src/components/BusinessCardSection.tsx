@@ -10,9 +10,9 @@ export default function BusinessCardSection() {
   const businessImage = '/images/use_netagram_body_image_4.png';
 
   return (
-    <section className="py-20">
+    <section className="py-20 w-full h-auto align-middle">
       <div className="container mx-auto">
-        <div className="max-w-797.872px mx-auto">
+        <div className="justify-center max-w-797.872px mx-auto">
           {/* Image Display with Overlay Buttons */}
           <div className="relative mb-8">
             <Image

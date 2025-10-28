@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="flex justify-between items-center mb-6">
           <h3 className="text-lg font-bold">(주)제제컴즈</h3>
           <nav className="flex gap-4 text-sm">
-            <Link href="/docs/company/NETAGRAM_회사소개_251023.pdf" className="hover:text-[#00D9B8] transition-colors">
+            <Link href="http://www.jejecomms.com" target="_blank" className="hover:text-[#00D9B8] transition-colors">
               회사소개
             </Link>
             <span className="text-gray-400">·</span>

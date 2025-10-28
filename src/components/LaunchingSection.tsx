@@ -4,7 +4,9 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 export default function LaunchingSection() {
-    const [activePhase, setActivePhase] = useState<number | null>(null);
+  const [activePhase, setActivePhase] = useState<number | null>(null);
+  const [isBlogHovered, setIsBlogHovered] = useState(false);
+  const [isYoutubeHovered, setIsYoutubeHovered] = useState(false);
 
   const phases = [
     {
@@ -86,17 +88,31 @@ export default function LaunchingSection() {
           </div>
 
           <div className="flex justify-center gap-24px mt-8">
-            <a href="https://blog.naver.com/jejecomms" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-[none] text-white rounded-lg hover:bg-[#00C4A8] transition-colors">
+            <a 
+              href="https://blog.naver.com/jejecomms" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-2 px-6 py-3 bg-[none] text-white rounded-lg hover:bg-[#ffffff] transition-colors"
+              onMouseEnter={() => setIsBlogHovered(true)}
+              onMouseLeave={() => setIsBlogHovered(false)}
+            >
               <Image
-                src="/images/blog_icon_enabled.png"
+                src={isBlogHovered ? "/images/blog_icon_enabled.png" : "/images/blog_icon_disabled.png"}
                 alt="블로그"
                 width={74}
                 height={74}
               />
             </a>
-            <a href="http://www.youtube.com/@jejecomms" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-[none] text-white rounded-lg hover:bg-[#E63E6B] transition-colors">
+            <a 
+              href="http://www.youtube.com/@jejecomms" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-2 px-6 py-3 bg-[none] text-white rounded-lg hover:bg-[#ffffff] transition-colors"
+              onMouseEnter={() => setIsYoutubeHovered(true)}
+              onMouseLeave={() => setIsYoutubeHovered(false)}
+            >
               <Image
-                src="/images/youtube_icon_enabled.png"
+                src={isYoutubeHovered ? "/images/youtube_icon_enabled.png" : "/images/youtube_icon_disabled.png"}
                 alt="유튜브"
                 width={74}
                 height={74}

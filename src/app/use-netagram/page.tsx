@@ -13,7 +13,7 @@ export default function UseNetagram() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="bg-[url('/images/use_netagram_body_background_image.png')] bg-cover bg-center bg-no-repeat">
+      <main className="w-full h-auto align-middle pt-28 bg-[url('/images/use_netagram_body_background_image.png')] bg-cover bg-center bg-no-repeat">
         <NetworkingSection />
         <PeriodicDeletion />
         <BusinessCardSection />
