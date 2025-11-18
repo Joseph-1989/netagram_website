@@ -39,7 +39,7 @@ export default function HeroSection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <a
-              href="https://play.google.com/store/apps/details?id=com.jejecomms.netagram"
+              href={process.env.NEXT_PUBLIC_PLAYSTORE_LINK}
               className="inline-block transition-transform hover:scale-105"
             >
               <Image
@@ -51,7 +51,7 @@ export default function HeroSection() {
               />
             </a>
             <a
-              href="https://apps.apple.com/kr/app/netagram/id6753970208"
+              href={process.env.NEXT_PUBLIC_APPSTORE_LINK}
               className="inline-block transition-transform hover:scale-105"
             >
               <Image
