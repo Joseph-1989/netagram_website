@@ -1,8 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FAQSection from '@/components/FAQSection';
-import ContactForm from '@/components/ContactForm';
-import MapSection from '@/components/MapSection';
 
 export const metadata = {
   title: 'Contact - NETAGRAM 문의하기',
@@ -15,8 +13,6 @@ export default function Contact() {
       <Header />
       <main>
         <FAQSection />
-        <ContactForm />
-        <MapSection />
       </main>
       <Footer />
     </div>

@@ -53,7 +53,7 @@ export default function BusinessCardSection() {
             />
 
             {/* Overlay Buttons positioned over the image buttons */}
-            <div className="absolute top-[100%] left-1/5 transform -translate-x-1/2 flex gap-2 bg-[#EEF0F4] px-2 py-2 rounded-lg">
+            {/* <div className="absolute top-[100%] left-1/5 transform -translate-x-1/2 flex gap-2 bg-[#EEF0F4] px-2 py-2 rounded-lg">
               <button
                 onClick={() => setActiveImage('business')}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
@@ -74,7 +74,7 @@ export default function BusinessCardSection() {
               >
                 {getButtonLabel('business')}
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

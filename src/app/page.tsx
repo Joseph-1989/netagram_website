@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
 import LaunchingSection from '@/components/LaunchingSection';
+import CompanyProductsSection from '@/components/CompanyProductsSection';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <HeroSection />
         <FeaturesSection />
         <LaunchingSection />
+        <CompanyProductsSection />
       </main>
       <Footer />
     </div>
