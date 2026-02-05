@@ -56,7 +56,7 @@ export default function FeaturesSection() {
               className="block"
             >
               <Image
-                src="/images/HomePage/download_QR_소개서.png"
+                src="/images/HomePage/download_QR_introduction.png"
                 alt="The_World_Created_by_NETAGRAM"
                 width={123}
                 height={150}
