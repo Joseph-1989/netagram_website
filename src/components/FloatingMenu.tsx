@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 
 export default function FloatingMenu() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,10 +28,20 @@ export default function FloatingMenu() {
     });
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  if (!isVisible) return null;
+
   return (
-    <div className="fixed right-8 bottom-30 z-50 flex flex-col items-end gap-4">
+    <div className="fixed right-8 bottom-32 max-[459px]:bottom-5 z-50 flex flex-col items-end gap-4 transition-opacity duration-300">
       {/* Main Menu Container */}
-      <div className="w-[240px] overflow-hidden rounded-[20px] bg-[#666666] text-white shadow-xl">
+      <div
+        className={`w-[240px] overflow-hidden rounded-[20px] bg-[#666666] text-white shadow-xl transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
+        } md:max-h-[800px] md:opacity-100`}
+      >
         {/* Family Site Section */}
         <div className="p-5 pb-2">
           <h3 className="mb-4 text-right text-[20px] font-normal text-[#99E1CD]">
@@ -38,7 +49,10 @@ export default function FloatingMenu() {
           </h3>
           <ul className="space-y-3 text-white text-right text-[16px] font-normal font-['NEXON Lv1 Gothic'] leading-normal">
             {[
-              { name: 'Landing Page', url: 'http://jejecomms.com/landing.html' },
+              {
+                name: 'Landing Page',
+                url: 'http://jejecomms.com/landing.html',
+              },
               { name: 'JEJECOMMMS', url: 'http://jejecomms.com/index.html' },
               { name: 'SHIFT', url: 'http://shiftapp.net' },
               { name: 'QR알리미', url: 'http://shiftapp.net/QR' },
@@ -46,7 +60,7 @@ export default function FloatingMenu() {
             ].map(site => (
               <li
                 key={site.name}
-                className="flex  text-[18px] items-center justify-end gap-2"
+                className="flex text-[18px] items-center justify-end gap-2"
               >
                 <Link
                   href={site.url}
@@ -54,10 +68,17 @@ export default function FloatingMenu() {
                   target="_blank"
                 >
                   {site.name}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                  >
                     <path
                       d="M5.6155 20C5.15517 20 4.77083 19.8458 4.4625 19.5375C4.15417 19.2292 4 18.8448 4 18.3845V5.6155C4 5.15517 4.15417 4.77083 4.4625 4.4625C4.77083 4.15417 5.15517 4 5.6155 4H11.2308V5H5.6155C5.4615 5 5.32042 5.06408 5.19225 5.19225C5.06408 5.32042 5 5.4615 5 5.6155V18.3845C5 18.5385 5.06408 18.6796 5.19225 18.8077C5.32042 18.9359 5.4615 19 5.6155 19H18.3845C18.5385 19 18.6796 18.9359 18.8077 18.8077C18.9359 18.6796 19 18.5385 19 18.3845V12.7692H20V18.3845C20 18.8448 19.8458 19.2292 19.5375 19.5375C19.2292 19.8458 18.8448 20 18.3845 20H5.6155ZM9.7385 14.9692L9.03075 14.2615L18.2923 5H14V4H20V10H19V5.70775L9.7385 14.9692Z"
-                      fill="white" />
+                      fill="white"
+                    />
                   </svg>
                 </Link>
               </li>
@@ -165,7 +186,29 @@ export default function FloatingMenu() {
         </div>
       </div>
 
-      {/* Floating Action Buttons */}
+      <button
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+        className="flex md:hidden h-[60px] w-[60px] flex-col items-center justify-center rounded-full bg-[#1A1A1A] text-white shadow-lg transition-transform hover:scale-110"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          className={`transition-transform duration-300 ${
+            isMenuOpen ? 'rotate-45' : ''
+          }`}
+        >
+          <path
+            d="M12 3.5V20.5M20.5 12H3.5"
+            stroke="#C3FFD9"
+            strokeLinecap="round"
+          />
+        </svg>
+      </button>
+
       <Link
         href="/faq"
         className="flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#1A1A1A] text-white shadow-lg transition-transform hover:scale-110"

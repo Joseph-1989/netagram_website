@@ -13,55 +13,79 @@ export default function FeaturesSection() {
   };
 
   return (
-    <section id="features" className="bg-white">
-      <div className="w-full mx-auto relative">
-        <div className="w-full mx-auto">
-          <Image
-            src={getImageSrc()}
-            alt="The_World_Created_by_NETAGRAM"
-            width={1920}
-            height={801}
-            className="w-full h-auto"
-          />
-          <div className="absolute top-[10%] left-0 w-full h-full flex items-center justify-center gap-8">
+    <section id="features" className="bg-white overflow-hidden relative">
+      <div className="w-full mx-auto">
+        <div className="w-full mx-auto ">
+          <picture>
+            <source
+              media="(max-width: 459px)"
+              srcSet="/images/HomePage/section_4_mobile.png"
+            />
+            <Image
+              src={getImageSrc()}
+              alt="The_World_Created_by_NETAGRAM"
+              width={1920}
+              height={801}
+              className="w-full h-auto"
+            />
+          </picture>
+          <div className="absolute top-[10%] left-0 max-[459px]:top-[40%] max-[459px]:left-[0%] w-full h-full flex items-center justify-center gap-8 max-[459px]:h-auto max-[459px]:flex-col max-[459px]:gap-4 max-[459px]:py-8 ">
             <a
-              href="https://play.google.com/store/apps/details?id=com.jejecomms.qrparking&hl=ko"
+              href="https://play.google.com/store/apps/details?id=com.jejecomms.netagram&hl=ko"
               target="_blank"
               className="block"
             >
-              <Image
-                src="/images/HomePage/download_QR_googleplay.png"
-                alt="The_World_Created_by_NETAGRAM"
-                width={123}
-                height={150}
-                className="min-w-[123px] h-[auto]"
-              />
+              <picture>
+                <source
+                  media="(max-width: 459px)"
+                  srcSet="/images/HomePage/download_Google_Play_mobile.png"
+                />
+                <Image
+                  src="/images/HomePage/download_QR_googleplay.png"
+                  alt="The_World_Created_by_NETAGRAM"
+                  width={123}
+                  height={150}
+                  className="min-w-[123px] h-[auto]"
+                />
+              </picture>
             </a>
             <a
-              href="https://play.google.com/store/apps/details?id=com.jejecomms.qrparking&hl=ko"
+              href="https://apps.apple.com/kr/app/netagram/id6753970208"
               target="_blank"
               className="block"
             >
-              <Image
-                src="/images/HomePage/download_QR_appstore.png"
-                alt="The_World_Created_by_NETAGRAM"
-                width={123}
-                height={150}
-                className="min-w-[123px] h-[auto]"
-              />
+              <picture>
+                <source
+                  media="(max-width: 459px)"
+                  srcSet="/images/HomePage/download_App_Store_mobile.png"
+                />
+                <Image
+                  src="/images/HomePage/download_QR_appstore.png"
+                  alt="The_World_Created_by_NETAGRAM"
+                  width={123}
+                  height={150}
+                  className="min-w-[123px] h-[auto]"
+                />
+              </picture>
             </a>
             <a
-              href="/docs/company/NETAGRAM_회사소개_251023.pdf"
+              href="/docs/company/NETAGRAM_INTRODUCTION.pdf"
               target="_blank"
               className="block"
             >
-              <Image
-                src="/images/HomePage/download_QR_introduction.png"
-                alt="The_World_Created_by_NETAGRAM"
-                width={123}
-                height={150}
-                className="min-w-[123px] h-[auto]"
-              />
+              <picture>
+                <source
+                  media="(max-width: 459px)"
+                  srcSet="/images/HomePage/download_introduction_mobile.png"
+                />
+                <Image
+                  src="/images/HomePage/download_QR_introduction.png"
+                  alt="The_World_Created_by_NETAGRAM"
+                  width={123}
+                  height={150}
+                  className="min-w-[123px] h-[auto]"
+                />
+              </picture>
             </a>
           </div>
         </div>

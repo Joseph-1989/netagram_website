@@ -13,16 +13,22 @@ export default function FeaturesSection() {
   };
 
   return (
-    <section id="features" className="py-20 bg-white">
+    <section id="features" className="py-20 max-[459px]:py-10 bg-white">
       <div className="w-full mx-auto">
         <div className="w-full mx-auto">
-          <Image
-            src={getImageSrc()}
+          <picture>
+            <source
+              srcSet={"/images/HomePage/section_2_mobile.png"}
+              media="(max-width: 459px)"
+            />
+             <Image
+            src={"/images/HomePage/section_2.png"}
             alt="The_World_Created_by_NETAGRAM"
             width={1920}
             height={3780}
             className="w-full h-auto"
           />
+          </picture>
         </div>
       </div>
     </section>

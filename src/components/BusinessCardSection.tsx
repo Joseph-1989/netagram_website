@@ -44,13 +44,19 @@ export default function BusinessCardSection() {
         <div className="justify-center max-w-797.872px mx-auto">
           {/* Image Display with Overlay Buttons */}
           <div className="relative mb-8">
-            <Image
-              src={getImageSrc(activeImage)}
-              alt={getAltText(activeImage)}
-              width={797.872}
-              height={304.255}
-              className="mx-auto w-797.872px h-304.255px"
-            />
+            <picture>
+              <source
+                media="(max-width: 459px)"
+                srcSet="/images/NetagramFeatureIntro/use_netagram_body_image_3_mobile_kor.png"
+              />
+              <Image
+                src={getImageSrc(activeImage)}
+                alt={getAltText(activeImage)}
+                width={797.872}
+                height={304.255}
+                className="mx-auto w-797.872px h-304.255px"
+              />
+            </picture>
 
             {/* Overlay Buttons positioned over the image buttons */}
             {/* <div className="absolute top-[100%] left-1/5 transform -translate-x-1/2 flex gap-2 bg-[#EEF0F4] px-2 py-2 rounded-lg">

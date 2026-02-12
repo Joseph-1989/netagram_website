@@ -15,13 +15,19 @@ export default function FeaturesSection() {
   return (
     <section id="features" className="py-20 bg-white">
       <div className="w-full">
-        <Image
-          src={getImageSrc()}
-          alt="The_World_Created_by_NETAGRAM"
-          width={1}
-          height={1}
-          className="w-full h-auto"
-        />
+        <picture>
+          <source
+            media="(max-width: 459px)"
+            srcSet="/images/NetagramIntroduction/section_2_mobile.png"
+          />
+          <Image
+            src={getImageSrc()}
+            alt="The_World_Created_by_NETAGRAM"
+            width={1}
+            height={1}
+            className="w-full h-auto"
+          />
+        </picture>
       </div>
     </section>
   );

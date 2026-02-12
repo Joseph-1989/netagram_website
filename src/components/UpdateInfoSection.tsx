@@ -88,7 +88,10 @@ export default function UpdateInfoSection() {
   const totalPages = 10;
 
   return (
-    <section id="features" className="mx-auto px-4 py-40 max-w-7xl">
+    <section
+      id="features"
+      className="mx-auto px-4 py-40 max-w-7xl max-[459px]:py-20 max-[459px]:px-2"
+    >
       <div className="text-center mb-12">
         <h2 className="text-2xl font-bold bg-gradient-to-r from-teal-500 to-teal-400 bg-clip-text text-transparent inline-block pb-2 border-b-2 border-teal-500">
           업데이트 정보
@@ -96,17 +99,17 @@ export default function UpdateInfoSection() {
       </div>
 
       <div className="w-full bg-white">
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[768px]">
+        <div className="overflow-x-auto max-[459px]:overflow-x-hidden">
+          <table className="w-full min-w-[768px] max-[459px]:min-w-0 max-[459px]:table-fixed">
             <thead>
               <tr className="border-t-2 border-gray-800 border-b border-gray-300">
-                <th className="py-4 text-center font-bold text-gray-800 w-24">
+                <th className="py-4 text-center font-bold text-gray-800 w-24 max-[459px]:w-10 max-[459px]:py-3 max-[459px]:text-sm">
                   No.
                 </th>
-                <th className="py-4 text-center font-bold text-gray-800">
+                <th className="py-4 text-center font-bold text-gray-800 max-[459px]:py-3 max-[459px]:text-sm max-[459px]:text-left">
                   Title
                 </th>
-                <th className="py-4 text-center font-bold text-gray-800 w-32">
+                <th className="py-4 text-center font-bold text-gray-800 w-32 max-[459px]:w-[72px] max-[459px]:py-3 max-[459px]:text-sm">
                   Date
                 </th>
               </tr>
@@ -117,15 +120,17 @@ export default function UpdateInfoSection() {
                   key={item.id}
                   className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
                 >
-                  <td className="py-4 text-center text-gray-600">{item.id}</td>
+                  <td className="py-4 text-center text-gray-600 max-[459px]:py-3 max-[459px]:text-sm">
+                    {item.id}
+                  </td>
                   <td
-                    className={`py-4 px-4 ${item.highlight ? 'text-cyan-500 font-medium' : 'text-gray-700'}`}
+                    className={`py-4 px-4 max-[459px]:py-3 max-[459px]:px-2 max-[459px]:text-sm max-[459px]:overflow-hidden max-[459px]:text-ellipsis max-[459px]:whitespace-nowrap max-[459px]:max-w-0 ${item.highlight ? 'text-cyan-500 font-medium' : 'text-gray-700'}`}
                   >
                     <Link href="#" className="hover:underline">
                       {item.title}
                     </Link>
                   </td>
-                  <td className="py-4 text-center text-gray-500">
+                  <td className="py-4 text-center text-gray-500 max-[459px]:py-3 max-[459px]:text-xs max-[459px]:whitespace-nowrap">
                     {item.date}
                   </td>
                 </tr>
@@ -135,7 +140,7 @@ export default function UpdateInfoSection() {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-center items-center mt-12 gap-2 text-gray-400 text-sm">
+        <div className="flex justify-center items-center mt-12 gap-2 text-gray-400 text-sm max-[459px]:mt-8 max-[459px]:gap-1">
           <button className="flex items-center justify-center w-8 h-8 hover:text-gray-600">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -169,11 +174,11 @@ export default function UpdateInfoSection() {
             </svg>
           </button>
 
-          <div className="flex gap-2 mx-2">
+          <div className="flex gap-2 mx-2 max-[459px]:gap-1 max-[459px]:mx-1">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(page => (
               <button
                 key={page}
-                className={`w-6 h-6 flex items-center justify-center ${
+                className={`w-6 h-6 flex items-center justify-center max-[459px]:text-xs ${
                   activePage === page
                     ? 'text-teal-500 font-bold'
                     : 'hover:text-gray-600'

@@ -43,23 +43,23 @@ export default function LaunchingSection() {
   };
 
   return (
-    <section className="py-20">
-      <div className="flex justify-center items-start mx-auto w-[1440px]">
+    <section className="py-20 max-[459px]:py-10">
+      <div className="flex justify-center items-start mx-auto w-full max-w-[1440px] max-[459px]:max-w-[459px]">
         {/* Left side - Title and Phase Buttons */}
-        <div className="flex px-16 justify-start items-start flex-col gap-16">
+        <div className="flex px-16 flex-col gap-10 max-[459px]:px-4 max-[459px]:flex-col max-[459px]:gap-8 max-[459px]:w-auto">
           {/* Title Section */}
-          <div>
-            <p className="m-0 p-0 text-[50px] leading-[150%]">
+          <div className="max-[459px]:w-[87.5px]">
+            <p className="m-0 p-0 text-[50px] max-[459px]:text-[17.975px] max-[459px]:leading-[27px] leading-[150%]">
               <span
-                className="block text-[#008384] text-[60px] font-normal leading-[150%]"
+                className="block text-[#008384] text-[60px] max-[459px]:text-[17.975px] max-[459px]:leading-[27px] font-normal leading-[150%]"
                 style={{ fontFamily: '"Bauhaus 93", sans-serif' }}
               >
                 NETAGRAM
               </span>
             </p>
-            <p className="m-0 p-0 text-[50px] leading-[150%]">
+            <p className="m-0 p-0 text-[50px] max-[459px]:text-[30px] leading-[150%]">
               <span
-                className="block text-[#000] text-[60px] font-normal leading-[150%]"
+                className="block text-[#000] text-[60px] max-[459px]:text-[17.975px] max-[459px]:leading-[27px] font-normal leading-[150%]"
                 style={{ fontFamily: '"Bauhaus 93", sans-serif' }}
               >
                 Launching
@@ -68,7 +68,7 @@ export default function LaunchingSection() {
           </div>
 
           {/* Phase Buttons */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 max-[459px]:w-[87.5px]">
             {phases.map(phase => (
               <button
                 key={phase.id}
@@ -82,11 +82,9 @@ export default function LaunchingSection() {
                 {/* Map Pin Icon */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="21"
-                  height="32"
                   viewBox="0 0 21 32"
                   fill="none"
-                  className="transition-colors duration-300"
+                  className="transition-colors duration-300 w-[21px] h-[32px] max-[459px]:w-[14.628px] max-[459px]:h-[23.068px]"
                 >
                   <path
                     d="M4.6513e-08 10.1484C4.6513e-08 15.7526 10.1471 32 10.1471 32V16.9949C9.24404 17.0011 8.34865 16.8286 7.51253 16.4873C6.67641 16.146 5.91606 15.6426 5.27529 15.0063C4.63451 14.3699 4.12597 13.613 3.77894 12.7793C3.4319 11.9455 3.25324 11.0513 3.25324 10.1482C3.25324 9.24514 3.4319 8.35097 3.77894 7.51722C4.12597 6.68346 4.63451 5.9266 5.27529 5.29022C5.91606 4.65383 6.67641 4.1505 7.51253 3.80921C8.34865 3.46792 9.24404 3.29541 10.1471 3.30162V0C8.81448 4.25239e-05 7.4949 0.262578 6.26373 0.772614C5.03256 1.28265 3.91392 2.0302 2.97167 2.97257C2.02942 3.91495 1.282 5.03369 0.772122 6.26493C0.262243 7.49616 -0.000127544 8.81577 4.6513e-08 10.1484Z"
@@ -104,16 +102,7 @@ export default function LaunchingSection() {
                   />
                 </svg>
                 {/* Phase Label */}
-                <span
-                  className="text-left"
-                  style={{
-                    fontFamily: 'Bauhaus 93',
-                    fontSize: '20px',
-                    fontWeight: 400,
-                    lineHeight: 'normal',
-                    color: '#000',
-                  }}
-                >
+                <span className="text-left font-['Bauhaus_93'] text-[20px] text-black max-[459px]:font-['NEXON_Lv1_Gothic_OTF'] max-[459px]:text-[14.418px] max-[459px]:text-black/50 max-[459px]:leading-[145%] max-[459px]:tracking-[-0.072px] max-[459px]:text-center">
                   {phase.label}
                 </span>
               </button>
@@ -122,19 +111,29 @@ export default function LaunchingSection() {
         </div>
 
         {/* Right side - Map */}
-        <div className="flex items-center justify-center w-auto h-auto">
+        <div className="flex items-center justify-center w-auto h-auto max-[459px]:w-auto max-[459px]:px-4 box-sizing:border-box">
           <div className="relative flex w-full h-full box-sizing:border-box">
-            <Image
-              src={getCurrentImageSrc()}
-              alt={
-                activePhase === null
-                  ? 'NETAGRAM 런칭 지도'
-                  : `${phases.find(p => p.id === activePhase)?.label} 지도`
-              }
-              width={685}
-              height={626}
-              className="min-w-[800px] h-[auto]"
-            />
+            <picture>
+              <source
+                srcSet={
+                  activePhase === null
+                    ? '/images/HomePage/section_3_mobile.png'
+                    : getCurrentImageSrc()
+                }
+                media="(max-width: 459px)"
+              />
+              <Image
+                src={getCurrentImageSrc()}
+                alt={
+                  activePhase === null
+                    ? 'NETAGRAM 런칭 지도'
+                    : `${phases.find(p => p.id === activePhase)?.label} 지도`
+                }
+                width={685}
+                height={626}
+                className="min-w-[800px] h-[auto] max-[459px]:min-w-0 max-[459px]:h-[174.021px] max-[459px]:w-[190.423px]"
+              />
+            </picture>
           </div>
         </div>
       </div>
