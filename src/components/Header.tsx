@@ -29,7 +29,7 @@ export default function Header() {
     },
     {
       label: 'CONTENTS',
-      href: '/contents',
+      href: '/',
       subItems: [{ label: '신규컨텐츠 개발', href: '/' }],
     },
     {
@@ -113,11 +113,8 @@ export default function Header() {
                       : 'text-[#000]'
                   }`}
                   onClick={e => {
-                    // Toggle submenu for NETAGRAM Is and COMMUNITY
-                    if (
-                      item.label === 'NETAGRAM Is' ||
-                      item.label === 'COMMUNITY'
-                    ) {
+                    // Toggle submenu for all nav items with subItems
+                    if (item.subItems && item.subItems.length > 0) {
                       e.preventDefault();
                       setHoveredMenu(
                         hoveredMenu === item.label ? null : item.label,
@@ -306,7 +303,7 @@ export default function Header() {
 
       {/* Desktop Submenu - only visible when hovering NETAGRAM Is or COMMUNITY */}
       <div className="container mx-auto px-4 md:w-[1440px]">
-        {(hoveredMenu === 'NETAGRAM Is' || hoveredMenu === 'COMMUNITY') && (
+        {hoveredMenu && (
           <div className="hidden md:block absolute left-0 right-0 top-16 bg-[#C3FFD9] h-16 border-t border-[#00D9B8]/20">
             <div className="container mx-auto px-4 w-[1440px]">
               <div className="flex items-center justify-start h-16 gap-8 px-10">
