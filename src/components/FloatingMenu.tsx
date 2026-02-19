@@ -2,12 +2,21 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function FloatingMenu() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isAlwaysVisiblePage = /(^|\/)(faq|update-info)(\/|$)/.test(
+    pathname || '',
+  );
 
   useEffect(() => {
+    if (isAlwaysVisiblePage) {
+      return;
+    }
+
     const handleScroll = () => {
       // Show button when page is scrolled down
       if (window.scrollY > 300) {
@@ -17,9 +26,10 @@ export default function FloatingMenu() {
       }
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isAlwaysVisiblePage]);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -32,13 +42,15 @@ export default function FloatingMenu() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  if (!isVisible) return null;
+  const shouldShowFloatingMenu = isAlwaysVisiblePage || isVisible;
+
+  if (!shouldShowFloatingMenu) return null;
 
   return (
     <div className="fixed right-8 bottom-32 max-[459px]:bottom-5 z-50 flex flex-col items-end gap-4 transition-opacity duration-300">
       {/* Main Menu Container */}
       <div
-        className={`w-[240px] overflow-hidden rounded-[20px] bg-[#666666] text-white shadow-xl transition-all duration-300 ease-in-out ${
+        className={`w-[200px] overflow-hidden rounded-[20px] bg-[#666666] text-white shadow-xl transition-all duration-300 ease-in-out ${
           isMenuOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'
         } md:max-h-[800px] md:opacity-100`}
       >

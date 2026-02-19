@@ -3,12 +3,12 @@ import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="text-[#1a5a5a] py-12 mx-32 rounded-[30px] bg-[#C3FFD9] max-[459px]:mx-4 max-[459px]:px-6 max-[459px]:py-8">
+    <footer className="text-[#1a5a5a] py-12 mx-16 mb-10 rounded-[30px] bg-[#C3FFD9] max-[459px]:mx-4 max-[459px]:mb-6 max-[459px]:px-6 max-[459px]:py-8">
       {/* Desktop View */}
-      <div className="container mx-auto px-4 hidden min-[460px]:block">
+      <div className="w-full px-12 xl:px-16 hidden min-[460px]:block">
         {/* Top Section - Logo Only */}
         <div className="flex justify-between items-center mb-6">
-          <Link href="/" className="flex items-center space-x-2 px-10">
+          <Link href="/" className="flex items-center space-x-2">
             <Image
               src="/images/netagram_header_logo.png"
               alt="NETAGRAM"

@@ -1,12 +1,10 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleLeft, faCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -26,12 +24,13 @@ const SLIDES = [
     image: '/images/HomePage/Swiper_Banner_2.png',
     mobileImage: '/images/HomePage/Swiper_Banner_2_mobile.png', // Mobile version
     alt: 'Banner 2',
-    link: 'https://shop.coupang.com/jejecomms?source=brandstore_sdp_atf&pid=9217417949&viid=94200982822&platform=p&brandId=0&btcEnableForce=false',
+    link: 'http://jejecomms.com/index.html?menuP=55',
   },
 ];
 
 export default function HeroSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [popupImage, setPopupImage] = useState<string | null>(null);
   const swiperRef = useRef<SwiperType | null>(null);
 
   const totalSlides = SLIDES.length;
@@ -139,7 +138,31 @@ export default function HeroSection() {
           {SLIDES.map(slide => (
             <SwiperSlide key={slide.id}>
               <div className="w-full h-full relative aspect-[7680/2320] max-[459px]:aspect-[1440/2080] overflow-hidden box-sizing-border-box">
-                {slide.link ? (
+                {slide.id === 1 ? (
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setPopupImage(
+                        '/images/HomePage/popup_image/sollal_popup_image.png',
+                      )
+                    }
+                    className="block w-full h-full p-0 border-0 bg-transparent cursor-pointer"
+                  >
+                    <picture>
+                      <source
+                        srcSet={slide.mobileImage}
+                        media="(max-width: 459px)"
+                      />
+                      <Image
+                        src={slide.image}
+                        alt={slide.alt}
+                        fill
+                        className="object-cover"
+                        priority={slide.id === 1}
+                      />
+                    </picture>
+                  </button>
+                ) : slide.link ? (
                   <a
                     href={slide.link}
                     target="_blank"
@@ -182,6 +205,34 @@ export default function HeroSection() {
           ))}
         </Swiper>
       </div>
+
+      {popupImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center px-4"
+          onClick={() => setPopupImage(null)}
+        >
+          <div
+            className="relative w-[min(92vw,960px)] h-[min(90vh,760px)]"
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setPopupImage(null)}
+              aria-label="Close popup"
+              className="absolute top-2 right-2 z-10 h-9 w-9 rounded-full bg-black/60 text-white text-2xl leading-none flex items-center justify-center"
+            >
+              ×
+            </button>
+            <Image
+              src={popupImage}
+              alt="Sollal popup image"
+              fill
+              className="object-contain"
+              sizes="(max-width: 768px) 92vw, 960px"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 }
