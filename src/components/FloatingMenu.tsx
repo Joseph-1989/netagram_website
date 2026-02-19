@@ -222,7 +222,7 @@ export default function FloatingMenu() {
       </button>
 
       <Link
-        href="/faq"
+        href="http://jejecomms.com/landing.html#contact_section"
         className="flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#1A1A1A] text-white shadow-lg transition-transform hover:scale-110"
       >
         <span className="text-3xl font-bold">?</span>
