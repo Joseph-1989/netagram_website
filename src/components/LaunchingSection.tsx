@@ -54,7 +54,7 @@ export default function LaunchingSection() {
                 className="block text-[#008384] text-[60px] max-[459px]:text-[17.975px] max-[459px]:leading-[27px] font-normal leading-[150%]"
                 style={{ fontFamily: '"Bauhaus 93", sans-serif' }}
               >
-                NETAGRAM
+                INTRE
               </span>
             </p>
             <p className="m-0 p-0 text-[50px] max-[459px]:text-[30px] leading-[150%]">

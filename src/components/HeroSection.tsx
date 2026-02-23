@@ -45,7 +45,7 @@ export default function HeroSection() {
                 className="block text-[#008384] text-[60px] max-[459px]:text-[22px] font-normal leading-[150%]"
                 style={{ fontFamily: '"Bauhaus 93", sans-serif' }}
               >
-                my real NETwork Around GRAM
+                beyond gram into the Real
               </span>
             </p>
           </div>

@@ -9,9 +9,9 @@ export default function FAQSection() {
   const faqs = [
     {
       id: 1,
-      question: '네타그램이란 무엇인가요?',
+      question: 'INTRE이란 무엇인가요?',
       answer:
-        '네타그램이란 진짜 인맥간의 리얼 소통을 위한 글로벌 관계형 SNS 플랫폼입니다.',
+        'INTRE이란 진짜 인맥간의 리얼 소통을 위한 글로벌 관계형 SNS 플랫폼입니다.',
     },
     {
       id: 2,
@@ -40,11 +40,11 @@ export default function FAQSection() {
     {
       id: 6,
       question: 'FCM 메시지(앱 PUSH)가 안올때는 어떻게 하나요?',
-      answer: `1. 네타그램 실행후, 우측상단의 "설정 → 알림"이 모두 ON인지 체크해주세요.
+      answer: `1. INTRE 실행후, 우측상단의 "설정 → 알림"이 모두 ON인지 체크해주세요.
                만약 모두 ON으로 되어 있다면, 앱의 알림은 정상입니다.
 
-               2. 휴대폰내 "설정→ 알림→ 앱 알림"으로 가셔서, 앱 리스트중에 'NETAGRAM'을 찾으시고 알림ON 여부를 체크해주세요.
-               만약 앱목록에 'NETAGRAM'이 없다면, 네타그램 앱을 지우고 다시한번 설치해 주십시오.
+               2. 휴대폰내 "설정→ 알림→ 앱 알림"으로 가셔서, 앱 리스트중에 'INTRE'을 찾으시고 알림ON 여부를 체크해주세요.
+               만약 앱목록에 'INTRE'이 없다면, INTRE 앱을 지우고 다시한번 설치해 주십시오.
 
                3. 앱 설치후, 피드나 N톡에서 글을 올려보시고, 위의 1, 2번을 다시한번 체크해주시면 됩니다.`,
       image: '/images/FAQ/FCM_answer.png',

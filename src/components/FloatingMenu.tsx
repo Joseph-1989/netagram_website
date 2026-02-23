@@ -68,7 +68,7 @@ export default function FloatingMenu() {
               { name: 'JEJECOMMMS', url: 'http://jejecomms.com/index.html' },
               { name: 'SHIFT', url: 'http://shiftapp.net' },
               { name: 'QR알리미', url: 'http://shiftapp.net/QR' },
-              { name: 'NETAGRAM', url: 'http://netagram.net' },
+              { name: 'INTRE', url: 'http://intresns.com' },
             ].map(site => (
               <li
                 key={site.name}
