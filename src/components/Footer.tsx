@@ -1,9 +1,11 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="text-[#1a5a5a] py-12 mx-16 mb-10 rounded-[30px] bg-[#C3FFD9] max-[459px]:mx-4 max-[459px]:mb-6 max-[459px]:px-6 max-[459px]:py-8">
+    <footer
+      id="site-footer"
+      className="text-[#1a5a5a] py-12 mx-16 mb-10 rounded-[30px] bg-[#C3FFD9] max-[459px]:mx-4 max-[459px]:mb-6 max-[459px]:px-6 max-[459px]:py-8"
+    >
       {/* Desktop View */}
       <div className="w-full px-12 xl:px-16 hidden min-[460px]:block">
         {/* Top Section - Logo Only */}
@@ -77,13 +79,13 @@ export default function Footer() {
               회사소개
             </Link>
             <Link
-              href="/docs/terms/NETAGRAM_서비스이용약관_251023.pdf"
+              href="/docs/terms/INTRE_서비스이용약관_260223.pdf"
               className="hover:text-[#00D9B8] transition-colors"
             >
               이용약관
             </Link>
             <Link
-              href="/docs/privacy/NETAGRAM_개인정보처리방침_251023.pdf"
+              href="/docs/privacy/INTRE_개인정보처리방침_260223.pdf"
               className="hover:text-[#00D9B8] transition-colors"
             >
               개인정보처리방침
@@ -156,10 +158,10 @@ export default function Footer() {
           <Link href="http://www.jejecomms.com" target="_blank">
             회사소개
           </Link>
-          <Link href="/docs/terms/NETAGRAM_서비스이용약관_251023.pdf">
+          <Link href="/docs/terms/INTRE_서비스이용약관_260223.pdf">
             이용약관
           </Link>
-          <Link href="/docs/privacy/NETAGRAM_개인정보처리방침_251023.pdf">
+          <Link href="/docs/privacy/INTRE_개인정보처리방침_260223.pdf">
             개인정보처리방침
           </Link>
         </div>

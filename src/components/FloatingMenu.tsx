@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 export default function FloatingMenu() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isFooterInViewMobile, setIsFooterInViewMobile] = useState(false);
   const pathname = usePathname();
   const isAlwaysVisiblePage = /(^|\/)(faq|update-info)(\/|$)/.test(
     pathname || '',
@@ -31,6 +32,51 @@ export default function FloatingMenu() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isAlwaysVisiblePage]);
 
+  useEffect(() => {
+    let observer: IntersectionObserver | null = null;
+
+    const watchFooter = () => {
+      if (observer) {
+        observer.disconnect();
+        observer = null;
+      }
+
+      if (!window.matchMedia('(max-width: 459px)').matches) {
+        setIsFooterInViewMobile(false);
+        return;
+      }
+
+      const footer = document.getElementById('site-footer');
+      if (!footer) {
+        setIsFooterInViewMobile(false);
+        return;
+      }
+
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          setIsFooterInViewMobile(entry.isIntersecting);
+        },
+        {
+          root: null,
+          threshold: 0,
+          rootMargin: '0px 0px 220px 0px',
+        },
+      );
+
+      observer.observe(footer);
+    };
+
+    watchFooter();
+    window.addEventListener('resize', watchFooter);
+
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+      window.removeEventListener('resize', watchFooter);
+    };
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -47,7 +93,11 @@ export default function FloatingMenu() {
   if (!shouldShowFloatingMenu) return null;
 
   return (
-    <div className="fixed right-8 bottom-32 max-[459px]:bottom-5 z-50 flex flex-col items-end gap-4 transition-opacity duration-300">
+    <div
+      className={`fixed right-8 bottom-32 z-50 flex flex-col items-end gap-4 transition-all duration-300 ${
+        isFooterInViewMobile ? 'max-[459px]:bottom-40' : 'max-[459px]:bottom-5'
+      }`}
+    >
       {/* Main Menu Container */}
       <div
         className={`w-[200px] overflow-hidden rounded-[20px] bg-[#666666] text-white shadow-xl transition-all duration-300 ease-in-out ${
