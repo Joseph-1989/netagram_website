@@ -12,6 +12,12 @@ export default function FeaturesSection() {
       : '/images/HomePage/section_4.png';
   };
 
+  const getIntroduceSrc = () => {
+    return language === 'ko'
+      ? '/docs/company/INTRE_INTRO_KO.pdf'
+      : '/docs/company/INTRE_INTRO_EN.pdf';
+  };
+
   return (
     <section id="features" className="bg-white overflow-hidden relative">
       <div className="w-full mx-auto">
@@ -69,7 +75,7 @@ export default function FeaturesSection() {
               </picture>
             </a>
             <a
-              href="/docs/company/NETAGRAM_INTRODUCTION.pdf"
+              href={getIntroduceSrc()}
               target="_blank"
               className="block"
             >
