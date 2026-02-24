@@ -79,14 +79,14 @@ export default function Footer() {
               회사소개
             </Link>
             <Link
-              href="/docs/terms/INTRE_서비스이용약관_260223.pdf"
+              href="/docs/terms/INTRE_Terms_of_Service_260223.pdf"
               target="_blank"
               className="hover:text-[#00D9B8] transition-colors"
             >
               이용약관
             </Link>
             <Link
-              href="/docs/privacy/INTRE_개인정보처리방침_260223.pdf"
+              href="/docs/privacy/INTRE_Privacy_Policy_260223.pdf"
               target="_blank"
               className="hover:text-[#00D9B8] transition-colors"
             >
@@ -160,10 +160,10 @@ export default function Footer() {
           <Link href="http://www.jejecomms.com" target="_blank">
             회사소개
           </Link>
-          <Link href="/docs/terms/INTRE_서비스이용약관_260223.pdf" target="_blank">
+          <Link href="/docs/terms/INTRE_Terms_of_Service_260223.pdf" target="_blank">
             이용약관
           </Link>
-          <Link href="/docs/privacy/INTRE_개인정보처리방침_260223.pdf" target="_blank">
+          <Link href="/docs/privacy/INTRE_Privacy_Policy_260223.pdf" target="_blank">
             개인정보처리방침
           </Link>
         </div>
