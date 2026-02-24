@@ -29,8 +29,8 @@ export default function Header() {
     },
     {
       label: 'CONTENTS',
-      href: '/',
-      subItems: [{ label: '신규컨텐츠 개발', href: '/' }],
+      href: '/contents',
+      subItems: [{ label: '신규컨텐츠 개발', href: '/contents' }],
     },
     {
       label: 'COMMUNITY',

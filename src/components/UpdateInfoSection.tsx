@@ -1,5 +1,6 @@
 'use client';
 
+import React, { useState } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import Link from 'next/link';
 
@@ -7,82 +8,58 @@ interface UpdateItem {
   id: number;
   title: string;
   date: string;
+  content?: string;
   highlight?: boolean;
 }
 
 const updateData: UpdateItem[] = [
-  { id: 55, title: 'QR알리미 업데이트', date: '26. 01. 09' },
   {
-    id: 54,
-    title: 'QR알리미, 드디어 쿠팡 브랜드관 입점하다.',
-    date: '25. 11. 27',
+    id: 1,
+    title: 'INTRE 업데이트',
+    date: '26. 02. 25',
+    content: `"당신의 소셜 라이프를 다시 정의합니다. Beyond Gram, Into the Real."
+
+구독자수에, 팔로우수에 집착하는 보여주기식 SNS를 쫓아오셨나요?
+기록이 짐이 되고, 관계가 부담이 되는 시대. 인트레(intre)는 당신의 일상을 가볍고 안전하게, 그리고 무엇보다 '진짜'답게 되찾아 드립니다.
+
+🛡️ Intre만의 4가지 핵심 차별점
+1. [인맥의 재정립] 숫자가 아닌, '진짜 마음'이 닿는 연결
+수천 명의 팔로워, 의미 없는 연락처 목록에 피로하셨나요?
+인트레(Intre)는 내 연락처 중 내가 직접 디지털 명함을 전달하고, 상대방이 수락한 '진짜 인맥'과만 연결됩니다. 오직 서로가 원하는 사람들끼리만 모인 견고하고 깊이 있는 인맥풀과 그 안에서 이루어지는 의미있는소통을 경험하세요.
+
+2. [30일 피드 자동 삭제] 남지 않기에 더 솔직할 수 있는 기록
+평생 남을까 봐 망설였던 기록들, 이제 마음껏 표현하세요.
+인트레(intre)의 모든 피드는 30일 주기로 자동 삭제됩니다. 과거의 나에 얽매이지 않고, 지금 이 순간의 '나'를 가장 솔직하게 기록하고 공유할 수 있는 휘발성 소통의 즐거움을 드립니다.
+
+3. [즉시 삭제 N-Talk] 흔적 없이 사라지는 1:1 대화
+대화가 끝난 뒤 서버에 남는 기록이 걱정되시나요?
+인트레(intre)의 N-Talk은 대화 종료와 동시에 기록이 즉시 삭제됩니다. 캡처나 유출 걱정 없이, 오직 대화의 본질에만 집중할 수 있는 가장 안전한 메신저 환경을 제공합니다.
+
+4. [Grouping 기반 소통] 우리만의 목적 있는 공간 생성
+취미/관심사, 관계형 그룹 생성과 초대를 통해, 형성된 그룹원들과 소통하세요.   가족만이 공유할 내용, 친구, 회사등의 그룹을 만들어서, 각 그룹에 맞는 성향으로 소통하세요.
+
+4. [강력한 보안 시스템] 오직 당신만을 위한 철통 방어
+소중한 일상이 외부에 노출되지 않도록 최첨단 보안 기술을 적용했습니다.
+허가되지 않은 접근을 차단하고 개인정보를 철저히 보호하여, 가장 프라이빗하고 안심할 수 있는 디지털 안식처를 보장합니다.
+
+💡 인트레(Intre)는 이런 분들께 제안합니다
+"연락처에 사람은 많지만, 정작 소통할 사람은 없다고 느껴지시는 분"
+"옛날 게시물이 박제되는 게 싫어 SNS 활동이 꺼리시는 분"
+"누군가 내 대화 기록을 볼까 봐 늘 불안한 분"
+"보여주기 식이 아닌, 진짜 내 사람들과만 소통하고 싶은 분"
+
+[브랜드 키워드]
+#Intre #인트레 #인맥재정립 #휘발성SNS #프라이빗메신저 #보안특화 #NTalk #30일피드 #디지털명함 #진짜소통`,
   },
-  {
-    id: 53,
-    title: '2025 G FAIR KOREA(일산 KINTEX) 참가 10/30~11/1 [ I-24 부스 ]',
-    date: '25. 11. 06',
-  },
-  {
-    id: 52,
-    title: '빅뉴스! 제제컴즈, 명품 배우 박귀순과 전속 모델 계약 체결!',
-    date: '25. 11. 06',
-    highlight: true,
-  },
-  {
-    id: 51,
-    title: '2025 청년인재 취업박람회_성남산업진흥원',
-    date: '25. 10. 01',
-  },
-  { id: 50, title: 'ITRC 인재양성대전 2025 참가.', date: '25. 05. 13' },
-  {
-    id: 49,
-    title: 'QR알리미 3차 와디즈 리워드펀딩 106% 성공 (2024.11월 블랙버드전)',
-    date: '25. 05. 12',
-  },
-  {
-    id: 48,
-    title: '(주)제제컴즈 성남글로벌융합센터로 이전',
-    date: '25. 05. 12',
-  },
-  {
-    id: 47,
-    title:
-      '(주)제제컴즈 2024도쿄 스마트팩토리 박람회 Smart Factory Expo(SFE) 참가',
-    date: '24. 01. 25',
-  },
-  {
-    id: 46,
-    title: '2023 사우디아라비아 타이프 투자포럼 참가',
-    date: '23. 12. 04',
-  },
-  {
-    id: 45,
-    title: 'QR알리미 와디즈 크라우드펀딩 2차펀딩 Start!!!',
-    date: '23. 10. 10',
-  },
-  {
-    id: 44,
-    title:
-      '(주)제제컴즈_사우디아라비아 타이프시티 전용 플랫폼 개발사업 3차 발표 진행',
-    date: '23. 09. 15',
-  },
-  {
-    id: 43,
-    title:
-      '(주)제제컴즈 "QR알리미"로 2023 SWEX(스마트 워크 엑스포 코리아) 참가!!!',
-    date: '23. 09. 15',
-  },
-  {
-    id: 42,
-    title:
-      '(주)제제컴즈_사우디아라비아 타이프주 뉴딜 스마트시티 조성사업 통합플랫폼 기반 구축부분 2차 발표 진행',
-    date: '23. 09. 15',
-  },
-  { id: 41, title: 'SHIFT 서비스 오류 안내', date: '23. 09. 15' },
 ];
 
 export default function UpdateInfoSection() {
   const language = useLanguage();
+  const [expandedId, setExpandedId] = useState<number | null>(null);
+
+  const toggleExpand = (id: number) => {
+    setExpandedId(expandedId === id ? null : id);
+  };
 
   const activePage = 1;
   const totalPages = 10;
@@ -90,7 +67,7 @@ export default function UpdateInfoSection() {
   return (
     <section
       id="features"
-      className="mx-auto px-4 py-40 max-w-7xl max-[459px]:py-20 max-[459px]:px-2"
+      className="mx-auto w-full px-4 py-40 max-w-7xl max-[459px]:py-20 max-[459px]:px-2"
     >
       <div className="text-center mb-12">
         <h2 className="text-2xl font-bold bg-gradient-to-r from-teal-500 to-teal-400 bg-clip-text text-transparent inline-block pb-2 border-b-2 border-teal-500">
@@ -99,7 +76,7 @@ export default function UpdateInfoSection() {
       </div>
 
       <div className="w-full bg-white">
-        <div className="overflow-x-auto max-[459px]:overflow-x-hidden">
+        <div className="overflow-x-auto min-h-[600px] max-[459px]:overflow-x-hidden max-[459px]:min-h-[500px]">
           <table className="w-full min-w-[768px] max-[459px]:min-w-0 max-[459px]:table-fixed">
             <thead>
               <tr className="border-t-2 border-gray-800 border-b border-gray-300">
@@ -116,24 +93,36 @@ export default function UpdateInfoSection() {
             </thead>
             <tbody>
               {updateData.map(item => (
-                <tr
-                  key={item.id}
-                  className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
-                >
-                  <td className="py-4 text-center text-gray-600 max-[459px]:py-3 max-[459px]:text-sm">
-                    {item.id}
-                  </td>
-                  <td
-                    className={`py-4 px-4 max-[459px]:py-3 max-[459px]:px-2 max-[459px]:text-sm max-[459px]:overflow-hidden max-[459px]:text-ellipsis max-[459px]:whitespace-nowrap max-[459px]:max-w-0 ${item.highlight ? 'text-cyan-500 font-medium' : 'text-gray-700'}`}
+                <React.Fragment key={item.id}>
+                  <tr
+                    className="border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer"
+                    onClick={() => toggleExpand(item.id)}
                   >
-                    <Link href="#" className="hover:underline">
-                      {item.title}
-                    </Link>
-                  </td>
-                  <td className="py-4 text-center text-gray-500 max-[459px]:py-3 max-[459px]:text-xs max-[459px]:whitespace-nowrap">
-                    {item.date}
-                  </td>
-                </tr>
+                    <td className="py-4 text-center text-gray-600 max-[459px]:py-3 max-[459px]:text-sm">
+                      {item.id}
+                    </td>
+                    <td
+                      className={`py-4 px-4 max-[459px]:py-3 max-[459px]:px-2 max-[459px]:text-sm max-[459px]:overflow-hidden max-[459px]:text-ellipsis max-[459px]:whitespace-nowrap max-[459px]:max-w-0 ${item.highlight ? 'text-cyan-500 font-medium' : 'text-gray-700'}`}
+                    >
+                      <span className="hover:underline text-left">
+                        {item.title}
+                      </span>
+                    </td>
+                    <td className="py-4 text-center text-gray-500 max-[459px]:py-3 max-[459px]:text-xs max-[459px]:whitespace-nowrap">
+                      {item.date}
+                    </td>
+                  </tr>
+                  {expandedId === item.id && item.content && (
+                    <tr className="bg-gray-50/50">
+                      <td
+                        colSpan={3}
+                        className="py-8 px-8 max-[459px]:px-4 max-[459px]:py-6 text-gray-700 whitespace-pre-line text-sm leading-relaxed border-b border-gray-200"
+                      >
+                        {item.content}
+                      </td>
+                    </tr>
+                  )}
+                </React.Fragment>
               ))}
             </tbody>
           </table>
@@ -175,18 +164,21 @@ export default function UpdateInfoSection() {
           </button>
 
           <div className="flex gap-2 mx-2 max-[459px]:gap-1 max-[459px]:mx-1">
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(page => (
-              <button
-                key={page}
-                className={`w-6 h-6 flex items-center justify-center max-[459px]:text-xs ${
-                  activePage === page
-                    ? 'text-teal-500 font-bold'
-                    : 'hover:text-gray-600'
-                }`}
-              >
-                {page}
-              </button>
-            ))}
+            {[...Array(totalPages)].map((_, i) => {
+              const page = i + 1;
+              return (
+                <button
+                  key={page}
+                  className={`w-6 h-6 flex items-center justify-center max-[459px]:text-xs ${
+                    activePage === page
+                      ? 'text-teal-500 font-bold'
+                      : 'hover:text-gray-600'
+                  }`}
+                >
+                  {page}
+                </button>
+              );
+            })}
           </div>
 
           <button className="flex items-center justify-center w-8 h-8 hover:text-gray-600">
