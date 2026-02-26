@@ -3,12 +3,14 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { useLanguage } from '@/hooks/useLanguage';
 
 export default function FloatingMenu() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isFooterInViewMobile, setIsFooterInViewMobile] = useState(false);
   const pathname = usePathname();
+  const language = useLanguage();
   const isAlwaysVisiblePage = /(^|\/)(faq|update-info)(\/|$)/.test(
     pathname || '',
   );
@@ -158,7 +160,9 @@ export default function FloatingMenu() {
           </h3>
           <ul className="space-y-3">
             <li className="flex items-center justify-end gap-3">
-              <span className="text-[20px] font-light">유튜브</span>
+              <span className="text-[20px] font-light">
+                {language === 'ko' ? '유튜브' : 'YouTube'}
+              </span>
               <Link
                 href="https://www.youtube.com/@jejecomms"
                 target="_blank"
@@ -181,7 +185,9 @@ export default function FloatingMenu() {
               </Link>
             </li>
             <li className="flex items-center justify-end gap-3">
-              <span className="text-[20px] font-light">인스타그램</span>
+              <span className="text-[20px] font-light">
+                {language === 'ko' ? '인스타그램' : 'Instagram'}
+              </span>
               <Link
                 href="https://www.instagram.com/jejecomms_jjang/"
                 target="_blank"
@@ -213,7 +219,9 @@ export default function FloatingMenu() {
               </Link>
             </li>
             <li className="flex items-center justify-end gap-3">
-              <span className="text-[20px] font-light">페이스북</span>
+              <span className="text-[20px] font-light">
+                {language === 'ko' ? '페이스북' : 'Facebook'}
+              </span>
               <Link
                 href="https://www.facebook.com/JeJeComms/"
                 target="_blank"
@@ -233,7 +241,9 @@ export default function FloatingMenu() {
               </Link>
             </li>
             <li className="flex items-center justify-end gap-3">
-              <span className="text-[20px] font-light">블로그</span>
+              <span className="text-[20px] font-light">
+                {language === 'ko' ? '블로그' : 'Blog'}
+              </span>
               <Link
                 href="https://blog.naver.com/jejecomms"
                 target="_blank"

@@ -12,12 +12,14 @@ interface UpdateItem {
   highlight?: boolean;
 }
 
-const updateData: UpdateItem[] = [
-  {
-    id: 1,
-    title: 'INTRE 업데이트',
-    date: '26. 02. 25',
-    content: `"당신의 소셜 라이프를 다시 정의합니다. Beyond Gram, Into the Real."
+function getUpdateData(language: string): UpdateItem[] {
+  return [
+    {
+      id: 1,
+      title: language === 'ko' ? 'INTRE 업데이트' : 'INTRE Update',
+      date: '26. 02. 25',
+      content: language === 'ko'
+        ? `"당신의 소셜 라이프를 다시 정의합니다. Beyond Gram, Into the Real."
 
 구독자수에, 팔로우수에 집착하는 보여주기식 SNS를 쫓아오셨나요?
 기록이 짐이 되고, 관계가 부담이 되는 시대. 인트레(intre)는 당신의 일상을 가볍고 안전하게, 그리고 무엇보다 '진짜'답게 되찾아 드립니다.
@@ -49,13 +51,49 @@ const updateData: UpdateItem[] = [
 "보여주기 식이 아닌, 진짜 내 사람들과만 소통하고 싶은 분"
 
 [브랜드 키워드]
-#Intre #인트레 #인맥재정립 #휘발성SNS #프라이빗메신저 #보안특화 #NTalk #30일피드 #디지털명함 #진짜소통`,
-  },
-];
+#Intre #인트레 #인맥재정립 #휘발성SNS #프라이빗메신저 #보안특화 #NTalk #30일피드 #디지털명함 #진짜소통`
+        : `"Redefining your social life. Beyond Gram, Into the Real."
+
+Are you tired of chasing vanity-driven social media obsessed with subscriber counts and follower numbers?
+In an era where records become burdens and relationships become obligations, Intre helps you reclaim your daily life — lightly, safely, and most importantly, authentically.
+
+🛡️ 4 Key Differentiators Unique to Intre
+1. [Redefining Connections] Connections Rooted in Real Heart, Not Numbers
+Tired of thousands of followers and meaningless contact lists?
+Intre connects you only with "real connections" — people you've personally sent your digital business card to and who have accepted it. Experience meaningful communication within a solid, deep network of people who truly want to connect with each other.
+
+2. [Automatic 30-Day Feed Deletion] Records You Can Be More Honest About Because They Don't Last
+Express yourself freely without worrying about records lasting forever.
+All feeds on Intre are automatically deleted on a 30-day cycle. Enjoy the pleasure of ephemeral communication where you can honestly record and share the "you" of this moment, without being tied to your past.
+
+3. [Instant-Delete N-Talk] 1:1 Conversations That Vanish Without a Trace
+Worried about conversation records remaining on servers after your chat ends?
+Intre's N-Talk instantly deletes all records the moment a conversation ends. It provides the safest messaging environment where you can focus purely on the essence of conversation, without worrying about screenshots or leaks.
+
+4. [Group-Based Communication] Creating Purpose-Driven Spaces
+Communicate with group members formed through hobby/interest and relational group creation and invitations. Create groups for family-only content, friends, work, and more — and communicate in a style that fits each group.
+
+5. [Robust Security System] Ironclad Protection Just for You
+We've applied cutting-edge security technology to ensure your precious daily life isn't exposed to the outside world.
+We block unauthorized access and thoroughly protect personal information, guaranteeing the most private and secure digital sanctuary.
+
+💡 Intre is for people who:
+"Have many contacts but feel like there's no one to actually communicate with"
+"Avoid social media because they hate old posts being permanently archived"
+"Are always anxious that someone might see their conversation history"
+"Want to communicate only with their real people, not for show"
+
+[Brand Keywords]
+#Intre #RedefiningConnections #EphemeralSNS #PrivateMessenger #SecurityFirst #NTalk #30DayFeed #DigitalBusinessCard #RealCommunication`,
+    },
+  ];
+}
 
 export default function UpdateInfoSection() {
   const language = useLanguage();
   const [expandedId, setExpandedId] = useState<number | null>(null);
+
+  const updateData = getUpdateData(language);
 
   const toggleExpand = (id: number) => {
     setExpandedId(expandedId === id ? null : id);
@@ -71,7 +109,7 @@ export default function UpdateInfoSection() {
     >
       <div className="text-center mb-12">
         <h2 className="text-2xl font-bold bg-gradient-to-r from-teal-500 to-teal-400 bg-clip-text text-transparent inline-block pb-2 border-b-2 border-teal-500">
-          업데이트 정보
+          {language === 'ko' ? '업데이트 정보' : 'Update Info'}
         </h2>
       </div>
 

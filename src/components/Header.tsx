@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { dispatchLanguageChange } from '@/hooks/useLanguage';
+import { dispatchLanguageChange, useLanguage } from '@/hooks/useLanguage';
 
 export default function Header() {
   const pathname = usePathname();
@@ -14,6 +14,7 @@ export default function Header() {
     null,
   );
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
+  const language = useLanguage();
 
   // Mobile accordion state
   const [activeMobileMenu, setActiveMobileMenu] = useState<string | null>(null);
@@ -23,21 +24,21 @@ export default function Header() {
       label: 'INTRE is',
       href: '/intre-introduction',
       subItems: [
-        { label: 'INTRE 소개', href: '/intre-introduction' },
-        { label: 'INTRE 기능', href: '/intre-feature-intro' },
+        { label: language === 'ko' ? 'INTRE 소개' : 'About INTRE', href: '/intre-introduction' },
+        { label: language === 'ko' ? 'INTRE 기능' : 'INTRE Features', href: '/intre-feature-intro' },
       ],
     },
     {
       label: 'CONTENTS',
       href: '/contents',
-      subItems: [{ label: '신규컨텐츠 개발', href: '/contents' }],
+      subItems: [{ label: language === 'ko' ? '신규컨텐츠 개발' : 'New Content Development', href: '/contents' }],
     },
     {
       label: 'COMMUNITY',
       href: '/community',
       subItems: [
         { label: 'FAQ', href: '/faq' },
-        { label: '업데이트 정보', href: '/update-info' },
+        { label: language === 'ko' ? '업데이트 정보' : 'Update Info', href: '/update-info' },
       ],
     },
   ];
@@ -173,7 +174,7 @@ export default function Header() {
                 </span>
                 <span className="hidden sm:block">
                   {languages.find(lang => lang.code === currentLanguage)
-                    ?.label || '언어선택'}
+                    ?.label || (language === 'ko' ? '언어선택' : 'Language')}
                 </span>
                 <svg
                   className={`w-4 h-4 transition-transform ${

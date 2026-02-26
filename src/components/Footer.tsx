@@ -1,6 +1,11 @@
+'use client';
+
 import Link from 'next/link';
+import { useLanguage } from '@/hooks/useLanguage';
 
 export default function Footer() {
+  const language = useLanguage();
+
   return (
     <footer
       id="site-footer"
@@ -50,13 +55,13 @@ export default function Footer() {
         {/* Company Details */}
         <div className="text-sm mb-12 space-y-2">
           <p>
-            (주)제제컴즈 <span className="text-[#1a5a5a] mx-3">|</span> 대표자 :
-            김준강 <span className="text-[#1a5a5a] mx-3">|</span> 사업자등록번호
-            : 641-88-00828 <span className="text-[#1a5a5a] mx-3">|</span>{' '}
-            통신판매업신고 : 제2021-성남수정-1335호
+            {language === 'ko' ? '(주)제제컴즈' : 'JEJECOMMs Co., Ltd.'} <span className="text-[#1a5a5a] mx-3">|</span> {language === 'ko' ? '대표자 : 김준강' : 'CEO: Jungang Kim'} <span className="text-[#1a5a5a] mx-3">|</span> {language === 'ko' ? '사업자등록번호 : 641-88-00828' : 'Business Reg. No.: 641-88-00828'} <span className="text-[#1a5a5a] mx-3">|</span>{' '}
+            {language === 'ko' ? '통신판매업신고 : 제2021-성남수정-1335호' : 'E-Commerce Reg.: 2021-SeongnamSujeong-1335'}
           </p>
           <p>
-            13449 경기 성남시 수정구 달래내로 46, 성남글로벌융합센터 A동 405호
+            {language === 'ko'
+              ? '13449 경기 성남시 수정구 달래내로 46, 성남글로벌융합센터 A동 405호'
+              : '13449 Rm 405, Bldg A, Seongnam Global Convergence Center, 46 Dallaenae-ro, Sujeong-gu, Seongnam-si, Gyeonggi-do'}
           </p>
           <p>
             T. 070-4252-5571 <span className="text-[#1a5a5a] mx-3">|</span> E.
@@ -76,21 +81,21 @@ export default function Footer() {
               target="_blank"
               className="hover:text-[#00D9B8] transition-colors"
             >
-              회사소개
+              {language === 'ko' ? '회사소개' : 'About Us'}
             </Link>
             <Link
               href="/docs/terms/INTRE_Terms_of_Service_260223.pdf"
               target="_blank"
               className="hover:text-[#00D9B8] transition-colors"
             >
-              이용약관
+              {language === 'ko' ? '이용약관' : 'Terms of Service'}
             </Link>
             <Link
               href="/docs/privacy/INTRE_Privacy_Policy_260223.pdf"
               target="_blank"
               className="hover:text-[#00D9B8] transition-colors"
             >
-              개인정보처리방침
+              {language === 'ko' ? '개인정보처리방침' : 'Privacy Policy'}
             </Link>
           </nav>
         </div>
@@ -136,12 +141,14 @@ export default function Footer() {
 
         {/* Company Info */}
         <div className="space-y-1 mb-6">
-          <p>(주)제제컴즈</p>
-          <p>대표자 : 김준강</p>
-          <p>사업자등록번호 : 641-88-00828</p>
-          <p>통신판매업신고 : 제2021-성남수정-1335호</p>
+          <p>{language === 'ko' ? '(주)제제컴즈' : 'JEJECOMMs Co., Ltd.'}</p>
+          <p>{language === 'ko' ? '대표자 : 김준강' : 'CEO: Jungang Kim'}</p>
+          <p>{language === 'ko' ? '사업자등록번호 : 641-88-00828' : 'Business Reg. No.: 641-88-00828'}</p>
+          <p>{language === 'ko' ? '통신판매업신고 : 제2021-성남수정-1335호' : 'E-Commerce Reg.: 2021-SeongnamSujeong-1335'}</p>
           <p className="leading-relaxed mt-2">
-            13449 경기 성남시 수정구 달래내로 46, 성남글로벌융합센터 A동 405호
+            {language === 'ko'
+              ? '13449 경기 성남시 수정구 달래내로 46, 성남글로벌융합센터 A동 405호'
+              : '13449 Rm 405, Bldg A, Seongnam Global Convergence Center, 46 Dallaenae-ro, Sujeong-gu, Seongnam-si, Gyeonggi-do'}
           </p>
         </div>
 
@@ -158,13 +165,13 @@ export default function Footer() {
         {/* Links */}
         <div className="flex gap-6 mb-8 font-bold">
           <Link href="http://www.jejecomms.com" target="_blank">
-            회사소개
+            {language === 'ko' ? '회사소개' : 'About Us'}
           </Link>
           <Link href="/docs/terms/INTRE_Terms_of_Service_260223.pdf" target="_blank">
-            이용약관
+            {language === 'ko' ? '이용약관' : 'Terms of Service'}
           </Link>
           <Link href="/docs/privacy/INTRE_Privacy_Policy_260223.pdf" target="_blank">
-            개인정보처리방침
+            {language === 'ko' ? '개인정보처리방침' : 'Privacy Policy'}
           </Link>
         </div>
 
