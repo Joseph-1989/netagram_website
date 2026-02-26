@@ -2,8 +2,10 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { useLanguage } from '@/hooks/useLanguage';
 
 export default function LaunchingSection() {
+  const language = useLanguage();
   const [activePhase, setActivePhase] = useState<number | null>(null);
   const [isBlogHovered, setIsBlogHovered] = useState(false);
   const [isYoutubeHovered, setIsYoutubeHovered] = useState(false);
@@ -11,21 +13,21 @@ export default function LaunchingSection() {
   const phases = [
     {
       id: 1,
-      label: '1차 런칭',
+      label: language === 'ko' ? '1차 런칭' : '1st Launch',
       button: '/images/HomePage/netagram_launching_button_1.png',
       map: '/images/netagram_launching_body_image_1.png',
       color: '#5777FF',
     },
     {
       id: 2,
-      label: '2차 런칭',
+      label: language === 'ko' ? '2차 런칭' : '2nd Launch',
       button: '/images/HomePage/netagram_launching_button_2.png',
       map: '/images/netagram_launching_body_image_2.png',
       color: '#FFD700',
     },
     {
       id: 3,
-      label: '3차 런칭',
+      label: language === 'ko' ? '3차 런칭' : '3rd Launch',
       button: '/images/HomePage/netagram_launching_button_3.png',
       map: '/images/netagram_launching_body_image_3.png',
       color: '#FF4B7E',

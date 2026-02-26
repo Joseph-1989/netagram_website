@@ -13,12 +13,24 @@ export default function BusinessCardSection() {
   const getImageSrc = (type: 'profile' | 'business') => {
     if (type === 'profile') {
       return language === 'ko'
-        ? '/images/use_netagram/use_netagram_body_image_3_kor.png'
-        : '/images/use_netagram/use_netagram_body_image_3_eng.png';
+        ? '/images/NetagramFeatureIntro/use_netagram_body_image_3_ko.png'
+        : '/images/NetagramFeatureIntro/use_netagram_body_image_3_en.png';
     } else {
       return language === 'ko'
-        ? '/images/use_netagram/use_netagram_body_image_4_kor.png'
-        : '/images/use_netagram/use_netagram_body_image_4_eng.png';
+        ? '/images/NetagramFeatureIntro/use_netagram_body_image_4_ko.png'
+        : '/images/NetagramFeatureIntro/use_netagram_body_image_4_en.png';
+    }
+  };
+
+  const getMobileImageSrc = (type: 'profile' | 'business') => {
+    if (type === 'profile') {
+      return language === 'ko'
+        ? '/images/NetagramFeatureIntro/use_netagram_body_image_3_mobile_ko.png'
+        : '/images/NetagramFeatureIntro/use_netagram_body_image_3_mobile_en.png';
+    } else {
+      return language === 'ko'
+        ? '/images/NetagramFeatureIntro/use_netagram_body_image_4_mobile_ko.png'
+        : '/images/NetagramFeatureIntro/use_netagram_body_image_4_mobile_en.png';
     }
   };
 
@@ -45,10 +57,7 @@ export default function BusinessCardSection() {
           {/* Image Display with Overlay Buttons */}
           <div className="relative mb-8">
             <picture>
-              <source
-                media="(max-width: 459px)"
-                srcSet="/images/NetagramFeatureIntro/use_netagram_body_image_3_mobile_kor.png"
-              />
+              <source media="(max-width: 459px)" srcSet={getMobileImageSrc(activeImage)} />
               <Image
                 src={getImageSrc(activeImage)}
                 alt={getAltText(activeImage)}

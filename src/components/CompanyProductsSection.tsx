@@ -9,7 +9,14 @@ export default function FeaturesSection() {
   const getImageSrc = () => {
     return language === 'ko'
       ? '/images/HomePage/section_4.png'
-      : '/images/HomePage/section_4.png';
+      : '/images/HomePage/section_4_en.png';
+  };
+
+
+  const getMobileImageSrc = () => {
+    return language === 'ko'
+      ? '/images/HomePage/section_4_mobile.png'
+      : '/images/HomePage/section_4_mobile_en.png';
   };
 
   const getIntroduceSrc = () => {
@@ -25,7 +32,7 @@ export default function FeaturesSection() {
           <picture>
             <source
               media="(max-width: 459px)"
-              srcSet="/images/HomePage/section_4_mobile.png"
+              srcSet={getMobileImageSrc()}
             />
             <Image
               src={getImageSrc()}

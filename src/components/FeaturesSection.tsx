@@ -9,20 +9,26 @@ export default function FeaturesSection() {
   const getImageSrc = () => {
     return language === 'ko'
       ? '/images/HomePage/section_2.png'
-      : '/images/HomePage/section_2.png';
+      : '/images/HomePage/section_2_en.png';
+  };
+
+  const getMobileImageSrc = () => {
+    return language === 'ko'
+      ? '/images/HomePage/section_2_mobile.png'
+      : '/images/HomePage/section_2_mobile_en.png';
   };
 
   return (
-    <section id="features" className="py-20 max-[459px]:py-10 bg-white">
+    <section id="features" className="max-[459px]:py-10 bg-white">
       <div className="w-full mx-auto">
         <div className="w-full mx-auto">
           <picture>
             <source
-              srcSet={"/images/HomePage/section_2_mobile.png"}
+              srcSet={getMobileImageSrc()}
               media="(max-width: 459px)"
             />
              <Image
-            src={"/images/HomePage/section_2.png"}
+            src={getImageSrc()}
             alt="The_World_Created_by_NETAGRAM"
             width={1920}
             height={3780}

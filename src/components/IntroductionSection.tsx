@@ -9,17 +9,20 @@ export default function FeaturesSection() {
   const getImageSrc = () => {
     return language === 'ko'
       ? '/images/NetagramIntroduction/section_1.png'
-      : '/images/NetagramIntroduction/section_1.png';
+      : '/images/NetagramIntroduction/section_1_en.png';
+  };
+
+  const getMobileImageSrc = () => {
+    return language === 'ko'
+      ? '/images/NetagramIntroduction/section_1_mobile.png'
+      : '/images/NetagramIntroduction/section_1_mobile_en.png';
   };
 
   return (
     <section id="features" className="mt-10 bg-white">
       <div className="w-full">
         <picture>
-          <source
-            media="(max-width: 459px)"
-            srcSet="/images/NetagramIntroduction/section_1_mobile.png"
-          />
+          <source media="(max-width: 459px)" srcSet={getMobileImageSrc()} />
           <Image
             src={getImageSrc()}
             width={7680}
