@@ -10,30 +10,41 @@ import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
+import { useLanguage } from '@/hooks/useLanguage';
 
-const SLIDES = [
-  {
-    id: 1,
-    image: '/images/HomePage/Swiper_Banner_1.png',
-    mobileImage: '/images/HomePage/Swiper_Banner_1_mobile.png', // Mobile version
-    alt: 'Banner 1',
-    link: 'https://shop.coupang.com/jejecomms?source=brandstore_sdp_atf&pid=9217417949&viid=94200982822&platform=p&brandId=0&btcEnableForce=false',
-  },
-  {
-    id: 2,
-    image: '/images/HomePage/Swiper_Banner_2.png',
-    mobileImage: '/images/HomePage/Swiper_Banner_2_mobile.png', // Mobile version
-    alt: 'Banner 2',
-    link: 'http://jejecomms.com/index.html?menuP=55',
-  },
-];
+function getSlides(language: string) {
+  return [
+    {
+      id: 1,
+      image: '/images/HomePage/Swiper_Banner_1.png',
+      mobileImage: '/images/HomePage/Swiper_Banner_1_mobile.png', // Mobile version
+      alt: 'Banner 1',
+      link: 'https://shop.coupang.com/jejecomms?source=brandstore_sdp_atf&pid=9217417949&viid=94200982822&platform=p&brandId=0&btcEnableForce=false',
+    },
+    {
+      id: 2,
+      image:
+        language === 'ko'
+          ? '/images/HomePage/Swiper_Banner_2.png'
+          : '/images/HomePage/Swiper_Banner_2_en.png',
+      mobileImage:
+        language === 'ko'
+          ? '/images/HomePage/Swiper_Banner_2_mobile.png'
+          : '/images/HomePage/Swiper_Banner_2_mobile_en.png', // Mobile version
+      alt: 'Banner 2',
+      link: '',
+    },
+  ];
+}
 
 export default function HeroSection() {
+  const language = useLanguage();
+  const slides = getSlides(language);
   const [activeIndex, setActiveIndex] = useState(0);
   const [popupImage, setPopupImage] = useState<string | null>(null);
   const swiperRef = useRef<SwiperType | null>(null);
 
-  const totalSlides = SLIDES.length;
+  const totalSlides = slides.length;
 
   return (
     <section className="relative w-full overflow-hidden bg-[#C3FFD9] pt-[72px] max-[459px]:pt-[115px] max-[459px]:max-w-[459px]">
@@ -59,7 +70,7 @@ export default function HeroSection() {
                 </div>
 
                 <div className="flex w-[150px] max-[459px]:w-full h-[0.75px] bg-[rgba(170,165,165,0.3)]">
-                  {SLIDES.map((_, index) => (
+                  {slides.map((_, index) => (
                     <div
                       key={index}
                       className={`flex-1 transition-colors duration-300 ${
@@ -135,7 +146,7 @@ export default function HeroSection() {
           }}
           className="w-full h-full"
         >
-          {SLIDES.map(slide => (
+          {slides.map(slide => (
             <SwiperSlide key={slide.id}>
               <div className="w-full h-full relative aspect-[7680/2320] max-[459px]:aspect-[1440/2080] overflow-hidden box-sizing-border-box">
                 {slide.id === 1 ? (

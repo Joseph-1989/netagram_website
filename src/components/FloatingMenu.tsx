@@ -119,7 +119,7 @@ export default function FloatingMenu() {
               },
               { name: 'JEJECOMMMS', url: 'http://jejecomms.com/index.html' },
               { name: 'SHIFT', url: 'http://shiftapp.net' },
-              { name: 'QR알리미', url: 'http://shiftapp.net/QR' },
+              { name: language === 'ko' ? 'QR알리미' : 'QR Alimy', url: 'http://shiftapp.net/QR' },
               { name: 'INTRE', url: 'http://intresns.com' },
             ].map(site => (
               <li
