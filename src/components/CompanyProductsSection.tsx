@@ -25,6 +25,18 @@ export default function FeaturesSection() {
       : '/docs/company/INTRE_INTRO_EN.pdf';
   };
 
+  const getIntrePlayStoreSrc = () => {
+    return language === 'ko'
+      ? 'https://play.google.com/store/apps/details?id=com.intre.sns&hl=ko'
+      : 'https://play.google.com/store/apps/details?id=com.intre.sns&hl=en';
+  };
+
+  const getIntreAppStoreSrc = () => {
+    return language === 'ko'
+      ? 'https://apps.apple.com/kr/app/intre/id6753970208'
+      : 'https://apps.apple.com/en/app/intre/id6753970208';
+  };
+
   return (
     <section id="features" className="bg-white overflow-hidden relative">
       <div className="w-full mx-auto">
@@ -44,7 +56,7 @@ export default function FeaturesSection() {
           </picture>
           <div className="absolute top-[10%] left-0 max-[459px]:top-[40%] max-[459px]:left-[0%] w-full h-full flex items-center justify-center gap-8 max-[459px]:h-auto max-[459px]:flex-col max-[459px]:gap-4 max-[459px]:py-8 ">
             <a
-              href="https://play.google.com/store/apps/details?id=com.jejecomms.netagram&hl=ko"
+              href={getIntrePlayStoreSrc()}
               target="_blank"
               className="block"
             >
@@ -63,7 +75,7 @@ export default function FeaturesSection() {
               </picture>
             </a>
             <a
-              href="https://apps.apple.com/kr/app/netagram/id6753970208"
+              href={getIntreAppStoreSrc()}
               target="_blank"
               className="block"
             >
