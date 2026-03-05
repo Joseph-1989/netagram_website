@@ -268,7 +268,7 @@ export default function AdminDashboard() {
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-100 text-gray-500 text-sm">
-                  <th className="p-4 font-medium">ID</th>
+                  <th className="p-4 font-medium">No.</th>
                   <th className="p-4 font-medium">Title</th>
                   <th className="p-4 font-medium">Image</th>
                   <th className="p-4 font-medium">Highlight</th>
@@ -284,7 +284,7 @@ export default function AdminDashboard() {
                     </td>
                   </tr>
                 ) : (
-                  items.map(item => (
+                  items.map((item, index) => (
                     <React.Fragment key={item.id}>
                       <tr
                         onClick={() =>
@@ -294,7 +294,9 @@ export default function AdminDashboard() {
                         }
                         className="hover:bg-gray-50/50 transition-colors cursor-pointer"
                       >
-                        <td className="p-4 text-sm text-gray-500">{item.id}</td>
+                        <td className="p-4 text-sm text-gray-500">
+                          {index + 1}
+                        </td>
                         <td className="p-4 text-sm text-gray-800 font-medium">
                           {item.title}
                         </td>

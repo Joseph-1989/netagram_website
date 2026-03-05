@@ -2,7 +2,18 @@
 
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
-import { graphqlRequest } from '@/lib/graphql';
+import { graphqlRequest, GRAPHQL_URL } from '@/lib/graphql';
+
+const getImageUrl = (path: string | null | undefined) => {
+  if (!path) return '';
+  if (path.startsWith('http')) return path;
+  try {
+    const url = new URL(GRAPHQL_URL);
+    return `${url.origin}${path.startsWith('/') ? '' : '/'}${path}`;
+  } catch {
+    return path;
+  }
+};
 
 interface UpdateItem {
   id: number;
@@ -110,14 +121,14 @@ export default function UpdateInfoSection() {
                   </td>
                 </tr>
               ) : (
-                updateData.map(item => (
+                updateData.map((item, index) => (
                   <React.Fragment key={item.id}>
                     <tr
                       className="border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer"
                       onClick={() => toggleExpand(item.id)}
                     >
                       <td className="py-4 text-center text-gray-600 max-[459px]:py-3 max-[459px]:text-sm">
-                        {item.id}
+                        {(activePage - 1) * 10 + index + 1}
                       </td>
                       <td
                         className={`py-4 px-4 max-[459px]:py-3 max-[459px]:px-2 max-[459px]:text-sm max-[459px]:overflow-hidden max-[459px]:text-ellipsis max-[459px]:whitespace-nowrap max-[459px]:max-w-0 ${item.highlight ? 'text-cyan-500 font-medium' : 'text-gray-700'}`}
@@ -140,7 +151,7 @@ export default function UpdateInfoSection() {
                             <div className="mb-6 max-w-2xl">
                               {/* eslint-disable-next-line @next/next/no-img-element */}
                               <img
-                                src={item.image}
+                                src={getImageUrl(item.image)}
                                 alt={item.title}
                                 className="w-full h-auto rounded-lg shadow-sm"
                               />
