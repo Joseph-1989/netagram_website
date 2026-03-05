@@ -65,11 +65,17 @@ const DELETE_MUTATION = `
   }
 `;
 
+const PAGE_LIMIT = 10;
+
 export default function AdminDashboard() {
   const router = useRouter();
   const [items, setItems] = useState<UpdateItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+
+  const [activePage, setActivePage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -91,22 +97,24 @@ export default function AdminDashboard() {
       router.push('/admin/login');
       return;
     }
-    fetchData();
-  }, [router]);
+    fetchData(activePage);
+  }, [router, activePage]);
 
-  const fetchData = async () => {
+  const fetchData = async (page = activePage) => {
     setLoading(true);
     setError('');
     try {
-      // API currently uses pagination, fetching top 50 for simplicity in the admin panel
       const data = await graphqlRequest<{ getUpdateInfoList: UpdateItem[] }>(
         GET_LIST,
-        {
-          page: 1,
-          limit: 50,
-        },
+        { page, limit: PAGE_LIMIT },
       );
-      setItems(data.getUpdateInfoList || []);
+      const fetched = data.getUpdateInfoList || [];
+      setItems(fetched);
+      const more = fetched.length === PAGE_LIMIT;
+      setHasMore(more);
+      setTotalPages(prev =>
+        more ? Math.max(prev, page + 1) : Math.max(prev, page),
+      );
     } catch (err: any) {
       setError(err.message || 'Failed to fetch items');
       if (
@@ -295,7 +303,7 @@ export default function AdminDashboard() {
                         className="hover:bg-gray-50/50 transition-colors cursor-pointer"
                       >
                         <td className="p-4 text-sm text-gray-500">
-                          {index + 1}
+                          {(activePage - 1) * PAGE_LIMIT + index + 1}
                         </td>
                         <td className="p-4 text-sm text-gray-800 font-medium">
                           {item.title}
@@ -372,6 +380,117 @@ export default function AdminDashboard() {
               </tbody>
             </table>
           </div>
+
+          {/* Pagination */}
+          {totalPages > 1 || hasMore ? (
+            <div className="flex justify-center items-center py-4 gap-2 text-gray-400 text-sm border-t border-gray-100">
+              {/* First */}
+              <button
+                onClick={() => setActivePage(1)}
+                disabled={activePage === 1}
+                className="flex items-center justify-center w-8 h-8 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"
+                  />
+                </svg>
+              </button>
+              {/* Prev */}
+              <button
+                onClick={() => setActivePage(p => Math.max(1, p - 1))}
+                disabled={activePage === 1}
+                className="flex items-center justify-center w-8 h-8 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 19.5 8.25 12l7.5-7.5"
+                  />
+                </svg>
+              </button>
+
+              {/* Page numbers */}
+              <div className="flex gap-1 mx-2">
+                {[...Array(totalPages)].map((_, i) => {
+                  const page = i + 1;
+                  return (
+                    <button
+                      key={page}
+                      onClick={() => setActivePage(page)}
+                      className={`w-7 h-7 rounded text-sm flex items-center justify-center ${
+                        activePage === page
+                          ? 'bg-teal-600 text-white font-bold'
+                          : 'hover:bg-gray-100 text-gray-500'
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Next */}
+              <button
+                onClick={() => setActivePage(p => p + 1)}
+                disabled={!hasMore && activePage === totalPages}
+                className="flex items-center justify-center w-8 h-8 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                  />
+                </svg>
+              </button>
+              {/* Last */}
+              <button
+                onClick={() => setActivePage(totalPages)}
+                disabled={!hasMore && activePage === totalPages}
+                className="flex items-center justify-center w-8 h-8 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+                  />
+                </svg>
+              </button>
+            </div>
+          ) : null}
         </div>
       </div>
 

@@ -51,6 +51,7 @@ export default function UpdateInfoSection() {
   const [updateData, setUpdateData] = useState<UpdateItem[]>([]);
   const [activePage, setActivePage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -64,9 +65,15 @@ export default function UpdateInfoSection() {
             limit: 10,
           },
         );
-        setUpdateData(data.getUpdateInfoList || []);
-        // Assuming your backend API currently doesn't return totalPages easily, let's max it to 1
-        setTotalPages(1);
+        const fetched = data.getUpdateInfoList || [];
+        setUpdateData(fetched);
+        // If the API returns exactly `limit` items, there may be more pages
+        const more = fetched.length === 10;
+        setHasMore(more);
+        // Grow totalPages as the user navigates forward
+        setTotalPages(prev =>
+          more ? Math.max(prev, activePage + 1) : Math.max(prev, activePage),
+        );
       } catch (error) {
         console.error('Failed to fetch update info:', error);
       } finally {
@@ -170,7 +177,12 @@ export default function UpdateInfoSection() {
 
         {/* Pagination */}
         <div className="flex justify-center items-center mt-12 gap-2 text-gray-400 text-sm max-[459px]:mt-8 max-[459px]:gap-1">
-          <button className="flex items-center justify-center w-8 h-8 hover:text-gray-600">
+          {/* First page */}
+          <button
+            onClick={() => setActivePage(1)}
+            disabled={activePage === 1}
+            className="flex items-center justify-center w-8 h-8 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -186,7 +198,12 @@ export default function UpdateInfoSection() {
               />
             </svg>
           </button>
-          <button className="flex items-center justify-center w-8 h-8 hover:text-gray-600">
+          {/* Previous page */}
+          <button
+            onClick={() => setActivePage(p => Math.max(1, p - 1))}
+            disabled={activePage === 1}
+            className="flex items-center justify-center w-8 h-8 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -209,6 +226,7 @@ export default function UpdateInfoSection() {
               return (
                 <button
                   key={page}
+                  onClick={() => setActivePage(page)}
                   className={`w-6 h-6 flex items-center justify-center max-[459px]:text-xs ${
                     activePage === page
                       ? 'text-teal-500 font-bold'
@@ -221,7 +239,12 @@ export default function UpdateInfoSection() {
             })}
           </div>
 
-          <button className="flex items-center justify-center w-8 h-8 hover:text-gray-600">
+          {/* Next page */}
+          <button
+            onClick={() => setActivePage(p => p + 1)}
+            disabled={!hasMore && activePage === totalPages}
+            className="flex items-center justify-center w-8 h-8 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -237,7 +260,12 @@ export default function UpdateInfoSection() {
               />
             </svg>
           </button>
-          <button className="flex items-center justify-center w-8 h-8 hover:text-gray-600">
+          {/* Last known page */}
+          <button
+            onClick={() => setActivePage(totalPages)}
+            disabled={!hasMore && activePage === totalPages}
+            className="flex items-center justify-center w-8 h-8 hover:text-gray-600 disabled:opacity-30 disabled:cursor-not-allowed"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
