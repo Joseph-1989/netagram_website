@@ -85,6 +85,33 @@ export default function FAQSection() {
                3. After reinstalling the app, try posting on a feed or N-Talk, and then check steps 1 and 2 again.`,
       image: '/images/FAQ/FCM_answer.png',
     },
+    {
+      id: 7,
+      question:
+        language === 'ko' ? '톡은 어떻게 사용하나요?' : 'How do I use IN-Talk?',
+      answer:
+        language === 'ko'
+          ? `친구목록에서 원하는 사람의 ‘in-Talk’ 버튼을 클릭해주시면 해당 인맥과 채팅이 가능합니다.
+             채팅창 상단의 ‘닫기’ 버튼 또는 채팅창을 아래로 끌어내리면 대화 내용이 남아 있게 되며,
+             채팅창 상단의 ‘종료’ 버튼을 클릭하면 대화 내용이 삭제 됩니다.`
+          : `You can chat with a connection by clicking their 'in-Talk' button in the friend list.
+             If you click the 'Close' button at the top of the chat window or pull the chat window down, the conversation history will remain.
+             If you click the 'End' button at the top of the chat window, the conversation history will be deleted.`,
+      image: '/images/FAQ/IN_TALK_USING_METHOD.png',
+    },
+    {
+      id: 8,
+      question:
+        language === 'ko' ? '피드는 어떻게 사용하나요?' : 'How do I use Feed?',
+      answer:
+        language === 'ko'
+          ? `피드에서 글을 올리거나 댓글을 달면, 해당 피드를 구독한 모든 친구들에게 실시간으로 피드가 전달됩니다.
+             피드 상단의 ‘닫기’ 버튼 또는 피드를 아래로 끌어내리면 피드 내용이 남아 있게 되며,
+             피드 상단의 ‘종료’ 버튼을 클릭하면 피드 내용이 삭제 됩니다.`
+          : `If you post or comment on a feed, the feed will be delivered in real-time to all friends who have subscribed to that feed.
+             If you click the 'Close' button at the top of the feed or pull the feed down, the feed content will remain.
+             If you click the 'End' button at the top of the feed, the feed content will be deleted.`,
+    },
   ];
 
   return (
