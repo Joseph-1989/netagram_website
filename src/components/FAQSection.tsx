@@ -102,15 +102,34 @@ export default function FAQSection() {
     {
       id: 8,
       question:
-        language === 'ko' ? '피드는 어떻게 사용하나요?' : 'How do I use Feed?',
+        language === 'ko' ? '소통형 그룹과 일방형 그룹의 차이는 무엇인가요?' : 'What is the difference between a communication group and a one-way group?',
       answer:
         language === 'ko'
-          ? `피드에서 글을 올리거나 댓글을 달면, 해당 피드를 구독한 모든 친구들에게 실시간으로 피드가 전달됩니다.
-             피드 상단의 ‘닫기’ 버튼 또는 피드를 아래로 끌어내리면 피드 내용이 남아 있게 되며,
-             피드 상단의 ‘종료’ 버튼을 클릭하면 피드 내용이 삭제 됩니다.`
-          : `If you post or comment on a feed, the feed will be delivered in real-time to all friends who have subscribed to that feed.
-             If you click the 'Close' button at the top of the feed or pull the feed down, the feed content will remain.
-             If you click the 'End' button at the top of the feed, the feed content will be deleted.`,
+          ? `소통형 그룹은 그룹장과 그룹원 모두 멤버추가가 가능하며, 그룹원 모두 그룹지정 피드작성이 가능해 가족, 친구 등 관계형 소통그룹으로 적합합니다.
+             일방형 그룹은 그룹장만 멤버추가가 가능하며, 그룹장만 그룹지정 피드작성이 가능해 정보전달용 피드그룹으로 적합합니다.`
+          : `Communication groups allow both the group leader and members to add new members, and all members can create group-specific feeds, making them suitable for relationship-based communication groups such as family and friends.
+             One-way groups allow only the group leader to add new members and create group-specific feeds, making them suitable for information-delivery feed groups.`,
+    },
+      {
+      id: 9,
+      question:
+        language === 'ko' ? '일정과 기념일 등록의 차이는 무엇인가요?' : 'What is the difference between a schedule and an anniversary?',
+      answer:
+        language === 'ko'
+          ? `일정은 개인일정, 그룹일정, 인맥일정으로 원하는 사람에게 일정을 공유할 수 있으며 하루전과 당일에 총 2번의 알림이 옵니다. 
+             기념일은 최대 10개까지 등록 가능하며 기념일 작성자는 3일전, 하루전, 당일에 총 3번의 알림이 가며, 공유대상자는 당일에 한번 알림이 오게됩니다.`
+          : `Schedules can be shared with anyone as personal, group, or contact schedules, and you will receive two notifications in total: one the day before and one on the day of the event.
+             Anniversaries can be registered up to a maximum of 10. The person who created the anniversary will receive three notifications in total: three days before, one day before, and on the day of the event, while the recipients will receive one notification on the day of the event.`,
+    },
+      {
+      id: 10,
+      question:
+        language === 'ko' ? '원하는 그룹의 피드만 볼 수는 없나요?' : 'Can I only view feeds from specific groups?',
+      answer:
+        language === 'ko'
+          ? `피드에서 이름 옆에 태그를 클릭하시면 해당 태그의 인맥 또는 그룹의 피드만 볼 수 있습니다.`
+            : `You can view feeds from specific contacts or groups by clicking the tag next to the name in the feed.`,
+      image: '/images/FAQ/DISPLAY_ONLY_SPECIFIC_FEED.png',
     },
   ];
 
