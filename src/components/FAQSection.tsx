@@ -102,7 +102,9 @@ export default function FAQSection() {
     {
       id: 8,
       question:
-        language === 'ko' ? '소통형 그룹과 일방형 그룹의 차이는 무엇인가요?' : 'What is the difference between a communication group and a one-way group?',
+        language === 'ko'
+          ? '소통형 그룹과 일방형 그룹의 차이는 무엇인가요?'
+          : 'What is the difference between a communication group and a one-way group?',
       answer:
         language === 'ko'
           ? `소통형 그룹은 그룹장과 그룹원 모두 멤버추가가 가능하며, 그룹원 모두 그룹지정 피드작성이 가능해 가족, 친구 등 관계형 소통그룹으로 적합합니다.
@@ -110,10 +112,12 @@ export default function FAQSection() {
           : `Communication groups allow both the group leader and members to add new members, and all members can create group-specific feeds, making them suitable for relationship-based communication groups such as family and friends.
              One-way groups allow only the group leader to add new members and create group-specific feeds, making them suitable for information-delivery feed groups.`,
     },
-      {
+    {
       id: 9,
       question:
-        language === 'ko' ? '일정과 기념일 등록의 차이는 무엇인가요?' : 'What is the difference between a schedule and an anniversary?',
+        language === 'ko'
+          ? '일정과 기념일 등록의 차이는 무엇인가요?'
+          : 'What is the difference between a schedule and an anniversary?',
       answer:
         language === 'ko'
           ? `일정은 개인일정, 그룹일정, 인맥일정으로 원하는 사람에게 일정을 공유할 수 있으며 하루전과 당일에 총 2번의 알림이 옵니다. 
@@ -121,15 +125,47 @@ export default function FAQSection() {
           : `Schedules can be shared with anyone as personal, group, or contact schedules, and you will receive two notifications in total: one the day before and one on the day of the event.
              Anniversaries can be registered up to a maximum of 10. The person who created the anniversary will receive three notifications in total: three days before, one day before, and on the day of the event, while the recipients will receive one notification on the day of the event.`,
     },
-      {
+    {
       id: 10,
       question:
-        language === 'ko' ? '원하는 그룹의 피드만 볼 수는 없나요?' : 'Can I only view feeds from specific groups?',
+        language === 'ko'
+          ? '원하는 그룹의 피드만 볼 수는 없나요?'
+          : 'Can I only view feeds from specific groups?',
       answer:
         language === 'ko'
           ? `피드에서 이름 옆에 태그를 클릭하시면 해당 태그의 인맥 또는 그룹의 피드만 볼 수 있습니다.`
-            : `You can view feeds from specific contacts or groups by clicking the tag next to the name in the feed.`,
+          : `You can view feeds from specific contacts or groups by clicking the tag next to the name in the feed.`,
       image: '/images/FAQ/DISPLAY_ONLY_SPECIFIC_FEED.png',
+    },
+    {
+      id: 11,
+      question:
+        language === 'ko'
+          ? '프로필 사진은 어떻게 바꾸나요?'
+          : 'How do I change my profile picture?',
+      answer:
+        language === 'ko'
+          ? `메뉴에서 ‘내프로필’로 이동해서 프로필 상단 우측의 편집 버튼을 눌러 ‘프로필 편집’으로 이동해주세요.
+             카메라 아이콘 버튼을 클릭하면 프로필 이미지를 변경하실 수 있습니다.
+             (프로필 사진과 명함 사진은 연동되어 있기때문에 한쪽을 변경하면 다른 한쪽도 자동으로 변경됩니다.)`
+          : `Go to 'My Profile' from the menu, click the edit button in the top right corner of the profile, and then go to 'Edit Profile'.
+             You can change your profile image by clicking the camera icon button.
+             (Profile pictures and business card pictures are linked, so if you change one, the other will automatically change.)`,
+      image: '/images/FAQ/PROFILE_IMAGE_UPDATE.png',
+    },
+    {
+      id: 12,
+      question:
+        language === 'ko'
+          ? '그룹에 친구를 추가하려면 어떻게 해야하나요?'
+          : 'How do I add a friend to a group?',
+      answer:
+        language === 'ko'
+          ? `해당 그룹 화면 하단에 멤버 추가 버튼이 있으며, INTRE를 이용하고 있는 사람은 ‘멤버 추가’버튼을 선택하고, 
+             INTRE를 이용하지 않는 사람의 경우 ‘외부 멤버 추가’ 버튼을 선택해 그룹 멤버를 추가해주세요.`
+          : `There is a member addition button at the bottom of the group screen. Select the 'Add Member' button if the person is using INTRE, 
+             and select the 'Add External Member' button if the person is not using INTRE to add group members.`,
+      image: '/images/FAQ/ADD_FRIEND_TO_GROUP.png',
     },
   ];
 

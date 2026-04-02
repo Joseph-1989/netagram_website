@@ -3,6 +3,8 @@ import Footer from '@/components/Footer';
 import NetworkingSection from '@/components/NetworkingSection';
 import PeriodicDeletion from '@/components/PeriodicDeletion';
 import BusinessCardSection from '@/components/BusinessCardSection';
+import ScheduleSharingSection from '@/components/ScheduleSharingSection';
+import GreetingCardSection from '@/components/GreetingCardSection';
 
 export const metadata = {
   title: 'Use INTRE - 관계형 네트워크와 명함 기반 소통',
@@ -18,6 +20,8 @@ export default function UseNetagram() {
         <NetworkingSection />
         <PeriodicDeletion />
         <BusinessCardSection />
+        <ScheduleSharingSection />
+        <GreetingCardSection />
       </main>
       <Footer />
     </div>
