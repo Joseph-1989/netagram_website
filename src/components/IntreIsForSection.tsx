@@ -8,14 +8,14 @@ export default function FeaturesSection() {
 
   const getImageSrc = () => {
     return language === 'ko'
-      ? '/images/NetagramIntroduction/section_2_ko.png'
-      : '/images/NetagramIntroduction/section_2_en.png';
+      ? '/images/NetagramIntroduction/section_5_ko.png'
+      : '/images/NetagramIntroduction/section_5_en.png';
   };
 
   const getMobileImageSrc = () => {
     return language === 'ko'
-      ? '/images/NetagramIntroduction/section_2_mobile_ko.png'
-      : '/images/NetagramIntroduction/section_2_mobile_en.png';
+      ? '/images/NetagramIntroduction/section_5_mobile_ko.png'
+      : '/images/NetagramIntroduction/section_5_mobile_en.png';
   };
 
   return (

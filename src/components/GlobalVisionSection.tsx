@@ -8,18 +8,18 @@ export default function FeaturesSection() {
 
   const getImageSrc = () => {
     return language === 'ko'
-      ? '/images/NetagramIntroduction/section_2_ko.png'
-      : '/images/NetagramIntroduction/section_2_en.png';
+      ? '/images/NetagramIntroduction/section_7_ko.png'
+      : '/images/NetagramIntroduction/section_7_en.png';
   };
 
   const getMobileImageSrc = () => {
     return language === 'ko'
-      ? '/images/NetagramIntroduction/section_2_mobile_ko.png'
-      : '/images/NetagramIntroduction/section_2_mobile_en.png';
+      ? '/images/NetagramIntroduction/section_7_mobile_ko.png'
+      : '/images/NetagramIntroduction/section_7_mobile_en.png';
   };
 
   return (
-    <section id="features" className="bg-white">
+    <section id="features" className="relative z-0 -mt-[20%] max-[459px]:p-10">
       <div className="w-full">
         <picture>
           <source media="(max-width: 459px)" srcSet={getMobileImageSrc()} />

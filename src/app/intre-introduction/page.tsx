@@ -2,6 +2,11 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import IntroductionSection from '@/components/IntroductionSection';
 import KeyValueSection from '@/components/KeyValuesSection';
+import AppDownloadSection from '@/components/AppDownloadSection';
+import BasicFeaturesSection from '@/components/BasicFeaturesSection';
+import IntreIsForSection from '@/components/IntreIsForSection';
+import ShareYourTrueHeartSection from '@/components/ShareYourTrueHeartSection';
+import GlobalVisionSection from '@/components/GlobalVisionSection';
 
 export const metadata = {
   title: 'Use INTRE - 관계형 네트워크와 명함 기반 소통',
@@ -15,6 +20,11 @@ export default function UseNetagram() {
       <main className="w-full h-auto align-middle">
         <IntroductionSection />
         <KeyValueSection />
+        <AppDownloadSection />
+        <BasicFeaturesSection />
+        <IntreIsForSection />
+        <ShareYourTrueHeartSection />
+        <GlobalVisionSection />
       </main>
       <Footer />
     </div>
