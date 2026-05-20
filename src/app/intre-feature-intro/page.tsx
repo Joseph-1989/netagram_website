@@ -1,10 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import NetworkingSection from '@/components/NetworkingSection';
-import PeriodicDeletion from '@/components/PeriodicDeletion';
-import BusinessCardSection from '@/components/BusinessCardSection';
-import ScheduleSharingSection from '@/components/ScheduleSharingSection';
-import GreetingCardSection from '@/components/GreetingCardSection';
+import IntreFeatureIntroContainer from '@/components/IntreFeatureIntroContainer';
 
 export const metadata = {
   title: 'Use INTRE - 관계형 네트워크와 명함 기반 소통',
@@ -16,12 +12,8 @@ export default function UseNetagram() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="w-full h-auto align-middle mb-10 mt-15 bg-[url('/images/NetagramFeatureIntro/use_netagram_body_background_image.png')] bg-cover bg-center bg-no-repeat">
-        <NetworkingSection />
-        <PeriodicDeletion />
-        <BusinessCardSection />
-        <ScheduleSharingSection />
-        <GreetingCardSection />
+      <main className="w-full h-auto align-middle mb-10 mt-15 bg-white">
+        <IntreFeatureIntroContainer />
       </main>
       <Footer />
     </div>
