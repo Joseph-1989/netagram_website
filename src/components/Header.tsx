@@ -16,9 +16,6 @@ export default function Header() {
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const language = useLanguage();
 
-  // Mobile accordion state
-  const [activeMobileMenu, setActiveMobileMenu] = useState<string | null>(null);
-
   const navItems = [
     {
       label: 'INTRE is',
@@ -42,6 +39,16 @@ export default function Header() {
       ],
     },
   ];
+
+  const activeMenuFromPath = navItems.find(item =>
+    item.subItems?.some(sub => sub.href === pathname)
+  )?.label || null;
+
+  const activeLNBMenu = hoveredMenu || activeMenuFromPath;
+  const hasLNB = activeLNBMenu !== null;
+
+  // Mobile accordion state
+  const [activeMobileMenu, setActiveMobileMenu] = useState<string | null>(null);
 
   const languages = [
     { code: 'ko', label: '한국어' },
@@ -88,7 +95,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isMenuOpen ? 'bg-white' : 'bg-[#C3FFD9]'}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${isMenuOpen || hasLNB ? 'bg-white shadow-[0_1px_0_0_rgba(0,0,0,0.05)]' : 'bg-[#C3FFD9]'}`}
     >
       <div className="w-full max-w-[1440px] mx-auto px-4 xl:px-0">
         <div className="flex items-center justify-between h-16 md:justify-start md:gap-4">
@@ -326,12 +333,12 @@ export default function Header() {
       </div>
 
       {/* Desktop Submenu */}
-      {hoveredMenu && (
+      {activeLNBMenu && (
         <div className="hidden md:block absolute left-0 right-0 top-16 bg-[#C3FFD9] h-16 border-t border-[#00D9B8]/20">
           <div className="w-full max-w-[1440px] mx-auto px-4 xl:px-0">
             <div className="flex items-center h-16 gap-8 md:pl-[152px]">
               {navItems
-                .find(item => item.label === hoveredMenu)
+                .find(item => item.label === activeLNBMenu)
                 ?.subItems?.map(sub => (
                   <Link
                     key={sub.label}

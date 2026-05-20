@@ -27,6 +27,7 @@ export default function FAQSection() {
         language === 'ko'
           ? '피드 작성하기에서 ‘모두에게 공유’ 버튼을 클릭하면 ‘모두에게 공유, 원하는 인맥만 공유, 원하는 그룹만 공유’로 공유범위를 선택 하실 수 있습니다.'
           : 'When creating a feed, click the "Share with everyone" button to select your sharing range: "Share with everyone", "Share with selected connections only", or "Share with selected groups only".',
+      image: '/images/FAQ/FEED_SHARE_SCOPE.png',
     },
     {
       id: 3,
@@ -38,6 +39,7 @@ export default function FAQSection() {
         language === 'ko'
           ? '명함 화면에서 우측 상단 옵션에 "명함 편집"버튼 클릭시 정보를 수정하실 수 있습니다.'
           : 'You can edit your information by clicking the "Edit Business Card" button in the options at the top right of the business card screen.',
+      image: '/images/FAQ/EDIT_BUSINESS_CARD.png',
     },
     {
       id: 4,
@@ -60,6 +62,7 @@ export default function FAQSection() {
         language === 'ko'
           ? '카카오톡, 라인, 문자로 전달하는 비대면 방식과 QR코드를 스캔해서 전달하는 대면방식이 있습니다.'
           : 'There are non-face-to-face methods such as KakaoTalk, LINE, and text messages, and face-to-face methods such as scanning a QR code.',
+      image: '/images/FAQ/DELIVER_BUSINESS_CARD.png',
     },
     {
       id: 6,
@@ -70,25 +73,25 @@ export default function FAQSection() {
       answer:
         language === 'ko'
           ? `1. INTRE 실행후, 우측상단의 "설정 → 알림"이 모두 ON인지 체크해주세요.
-               만약 모두 ON으로 되어 있다면, 앱의 알림은 정상입니다.
+             만약 모두 ON으로 되어 있다면, 앱의 알림은 정상입니다.
 
-               2. 휴대폰내 "설정→ 알림→ 앱 알림"으로 가셔서, 앱 리스트중에 'INTRE'을 찾으시고 알림ON 여부를 체크해주세요.
-               만약 앱목록에 'INTRE'이 없다면, INTRE 앱을 지우고 다시한번 설치해 주십시오.
+             2. 휴대폰내 "설정→ 알림→ 앱 알림"으로 가셔서, 앱 리스트중에 'INTRE'을 찾으시고 알림ON 여부를 체크해주세요.
+             만약 앱목록에 'INTRE'이 없다면, INTRE 앱을 지우고 다시한번 설치해 주십시오.
 
-               3. 앱 설치후, 피드나 N톡에서 글을 올려보시고, 위의 1, 2번을 다시한번 체크해주시면 됩니다.`
+             3. 앱 설치후, 피드나 N톡에서 글을 올려보시고, 위의 1, 2번을 다시한번 체크해주시면 됩니다.`
           : `1. After launching INTRE, go to "Settings → Notifications" in the top right corner and check that all notifications are turned ON.
-               If they are all ON, the app notifications are working normally.
+             If they are all ON, the app notifications are working normally.
 
-               2. On your phone, go to "Settings → Notifications → App Notifications", find 'INTRE' in the app list, and check whether notifications are turned ON.
-               If 'INTRE' is not in the app list, please delete the INTRE app and reinstall it.
+             2. On your phone, go to "Settings → Notifications → App Notifications", find 'INTRE' in the app list, and check whether notifications are turned ON.
+             If 'INTRE' is not in the app list, please delete the INTRE app and reinstall it.
 
-               3. After reinstalling the app, try posting on a feed or N-Talk, and then check steps 1 and 2 again.`,
-      image: '/images/FAQ/FCM_answer.png',
+             3. After reinstalling the app, try posting on a feed or N-Talk, and then check steps 1 and 2 again.`,
+      image: '/images/FAQ/FCM_ANSWER.png',
     },
     {
       id: 7,
       question:
-        language === 'ko' ? '톡은 어떻게 사용하나요?' : 'How do I use IN-Talk?',
+        language === 'ko' ? '톡은 어떻게 보낼 수 있나요?' : 'How do I send an IN-Talk message?',
       answer:
         language === 'ko'
           ? `친구목록에서 원하는 사람의 ‘in-Talk’ 버튼을 클릭해주시면 해당 인맥과 채팅이 가능합니다.
@@ -171,86 +174,101 @@ export default function FAQSection() {
 
   return (
     <section id="faq" className="py-20 h-[100%] pt-40 bg-white mb-40">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#00D9B8] text-center mb-12">
+      <div className="w-full max-w-[1440px] mx-auto px-4 xl:px-0">
+        
+        {/* Title Block with Premium Figma Spacing and Graphic Accent */}
+        <div className="flex flex-col items-center justify-center mb-16">
+          <h2 className="font-['NEXON_Lv1_Gothic',sans-serif] font-bold text-[32px] tracking-[3.84px] text-[#008384] text-center mb-4">
             FAQ
           </h2>
+          <div className="h-[2px] w-[60px] bg-[#008384] rounded-full"></div>
+        </div>
 
-          <div className="space-y-4">
-            {faqs.map(faq => (
-              <div
-                key={faq.id}
-                className="border border-gray-200 rounded-lg overflow-hidden"
-              >
-                <button
-                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-                  onClick={() =>
-                    setOpenItem(openItem === faq.id ? null : faq.id)
-                  }
+        {/* FAQ Accordion List conformed to w-[1000px] desktop width */}
+        <div className="max-w-[1000px] mx-auto px-4 md:px-0">
+          <div className="flex flex-col gap-6">
+            {faqs.map(faq => {
+              const isOpen = openItem === faq.id;
+              return (
+                <div
+                  key={faq.id}
+                  className="bg-[#f3f6fa] border border-[rgba(0,0,0,0.1)] rounded-[8px] overflow-hidden transition-all duration-300 shadow-sm hover:shadow-md"
                 >
-                  <div className="flex items-center">
-                    <Image
-                      src="/images/Question_icon.png"
-                      alt="Question"
-                      width={20}
-                      height={20}
-                      className="mr-3"
-                    />
-                    <span className="font-medium text-gray-900">
-                      {faq.question}
-                    </span>
-                  </div>
-                  <svg
-                    className={`w-5 h-5 text-gray-500 transition-transform ${
-                      openItem === faq.id ? 'rotate-180' : ''
-                    }`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                  {/* Q Block / Accordion Header */}
+                  <button
+                    className="w-full flex items-center justify-between text-left focus:outline-none transition-colors"
+                    onClick={() => setOpenItem(isOpen ? null : faq.id)}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
+                    <div className="flex items-center flex-1">
+                      {/* Stylized Q icon using Yoon_Childfundkorea font */}
+                      <div className="flex items-center justify-center w-[65px] h-[65px] flex-shrink-0">
+                        <span className="font-['Yoon_Childfundkorea',sans-serif] text-[40px] leading-none text-[#999999]">
+                          Q
+                        </span>
+                      </div>
+                      <span className="font-['NEXON_Lv1_Gothic',sans-serif] font-medium text-[16px] md:text-[18px] text-gray-900 py-4 pr-4">
+                        {faq.question}
+                      </span>
+                    </div>
 
-                {openItem === faq.id && (
-                  <div className="px-6 pb-4 bg-gray-50">
-                    <div className="flex items-start">
-                      <Image
-                        src="/images/Answer_icon.png"
-                        alt="Answer"
-                        width={20}
-                        height={20}
-                        className="mr-3 mt-1 flex-shrink-0"
-                      />
-                      <div className="flex-1">
-                        <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                    {/* Smooth custom dropdown chevron */}
+                    <div className="flex items-center justify-center w-[65px] h-[65px] flex-shrink-0">
+                      <svg
+                        className={`w-5 h-5 text-gray-500 transition-transform duration-300 ${
+                          isOpen ? 'rotate-180' : ''
+                        }`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                  </button>
+
+                  {/* A Block / Answer Content (Collapsible with smooth animation) */}
+                  <div
+                    className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                      isOpen ? 'max-h-[1200px] border-t border-[rgba(0,0,0,0.05)] bg-[#f3f6fa]' : 'max-h-0'
+                    }`}
+                  >
+                    <div className="flex items-start w-full">
+                      {/* Stylized A icon using Yoon_Childfundkorea font */}
+                      <div className="flex items-center justify-center w-[65px] h-[65px] flex-shrink-0">
+                        <span className="font-['Yoon_Childfundkorea',sans-serif] text-[40px] leading-none text-[#008384]">
+                          A
+                        </span>
+                      </div>
+
+                      {/* Answer Paragraph and Illustration Images */}
+                      <div className="flex-1 py-[20px] pr-[32px] pl-0 flex flex-col gap-6">
+                        <p className="font-['NEXON_Lv1_Gothic',sans-serif] leading-[1.6] text-[14px] md:text-[15px] text-gray-800 whitespace-pre-line">
                           {faq.answer}
                         </p>
-                        {/* @ts-ignore */}
+
                         {faq.image && (
-                          <div className="mt-4">
+                          <div className="mt-2 self-start rounded-lg border border-gray-200/50 overflow-hidden bg-white p-2 shadow-sm max-w-full">
                             <Image
-                              /* @ts-ignore */
                               src={faq.image}
                               alt="Answer illustration"
                               width={500}
-                              height={300}
-                              className="rounded-lg border border-gray-100 w-full h-auto"
+                              height={350}
+                              className="rounded-md w-full max-w-[500px] h-auto object-contain"
+                              priority={faq.id <= 3}
                             />
                           </div>
                         )}
                       </div>
                     </div>
                   </div>
-                )}
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
