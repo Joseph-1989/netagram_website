@@ -36,6 +36,7 @@ export default function Header() {
       subItems: [
         { label: 'FAQ', href: '/faq' },
         { label: language === 'ko' ? '업데이트 정보' : 'Update Info', href: '/update-info' },
+        { label: language === 'ko' ? 'INTRE 활용하기' : 'How to Utilize INTRE', href: '/intre-utilization' },
       ],
     },
   ];
