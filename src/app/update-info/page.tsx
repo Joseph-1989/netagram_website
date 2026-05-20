@@ -3,8 +3,8 @@ import Footer from '@/components/Footer';
 import UpdateInfoSection from '@/components/UpdateInfoSection';
 
 export const metadata = {
-  title: 'Update Info - NETAGRAM',
-  description: 'NETAGRAM의 최신 업데이트 소식을 확인하세요.',
+  title: 'Update Info - INTRE',
+  description: 'INTRE의 최신 업데이트 소식을 확인하세요.',
 };
 
 export default function UpdateInfoPage() {

@@ -3,7 +3,7 @@ import Footer from '@/components/Footer';
 import IntreUtilizationContainer from '@/components/IntreUtilizationContainer';
 
 export const metadata = {
-  title: 'INTRE 활용하기 - NETAGRAM',
+  title: 'INTRE 활용하기 - INTRE',
   description: 'INTRE의 다양한 활용 사례와 가이드를 확인해보세요. 가족, 친구, 소상공인, 인플루언서 등 누구나 쉽게 사용할 수 있는 소통 커뮤니티입니다.',
 };
 
