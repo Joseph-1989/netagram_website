@@ -128,7 +128,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="w-full min-h-[580px]">
+      <div className="w-full">
         <Swiper
           modules={[Autoplay, EffectFade, Navigation]}
           effect="fade"

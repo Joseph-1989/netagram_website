@@ -19,10 +19,10 @@ export default function FeaturesSection() {
   };
 
   return (
-    <section id="features" className="max-[459px]:py-10 bg-white">
+    <section id="features" className="bg-white">
       <div className="w-full mx-auto">
         <div className="w-full mx-auto">
-          <picture>
+          <picture className="w-full flex">
             <source
               srcSet={getMobileImageSrc()}
               media="(max-width: 459px)"
@@ -32,7 +32,7 @@ export default function FeaturesSection() {
             alt="The_World_Created_by_NETAGRAM"
             width={1920}
             height={3780}
-            className="w-full h-auto"
+            className="w-full h-auto block"
           />
           </picture>
         </div>
