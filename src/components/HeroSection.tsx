@@ -16,22 +16,41 @@ function getSlides(language: string) {
   return [
     {
       id: 1,
-      image: '/images/HomePage/Swiper_Banner_1.png',
-      mobileImage: '/images/HomePage/Swiper_Banner_1_mobile.png', // Mobile version
+      image:
+        language === 'ko'
+          ? '/images/HomePage/Swiper_Banner_1_desktop_ko.png'
+          : '/images/HomePage/Swiper_Banner_1_desktop_en.png',
+      mobileImage:
+        language === 'ko'
+          ? '/images/HomePage/Swiper_Banner_1_mobile_ko.png'
+          : '/images/HomePage/Swiper_Banner_1_mobile_en.png',
       alt: 'Banner 1',
-      link: 'https://shop.coupang.com/jejecomms?source=brandstore_sdp_atf&pid=9217417949&viid=94200982822&platform=p&brandId=0&btcEnableForce=false',
+      link: '',
     },
     {
       id: 2,
       image:
         language === 'ko'
-          ? '/images/HomePage/Swiper_Banner_2.png'
-          : '/images/HomePage/Swiper_Banner_2_en.png',
+          ? '/images/HomePage/Swiper_Banner_2_desktop_ko.png'
+          : '/images/HomePage/Swiper_Banner_2_desktop_en.png',
       mobileImage:
         language === 'ko'
-          ? '/images/HomePage/Swiper_Banner_2_mobile.png'
-          : '/images/HomePage/Swiper_Banner_2_mobile_en.png', // Mobile version
+          ? '/images/HomePage/Swiper_Banner_2_mobile_ko.png'
+          : '/images/HomePage/Swiper_Banner_2_mobile_en.png',
       alt: 'Banner 2',
+      link: '',
+    },
+    {
+      id: 3,
+      image:
+        language === 'ko'
+          ? '/images/HomePage/Swiper_Banner_3_desktop_ko.png'
+          : '/images/HomePage/Swiper_Banner_3_desktop_en.png',
+      mobileImage:
+        language === 'ko'
+          ? '/images/HomePage/Swiper_Banner_3_mobile_ko.png'
+          : '/images/HomePage/Swiper_Banner_3_mobile_en.png',
+      alt: 'Banner 3',
       link: '',
     },
   ];
