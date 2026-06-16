@@ -25,7 +25,7 @@ function getSlides(language: string) {
           ? '/images/HomePage/Swiper_Banner_1_mobile_ko.png'
           : '/images/HomePage/Swiper_Banner_1_mobile_en.png',
       alt: 'Banner 1',
-      link: '',
+      link: 'https://intresns.com/',
     },
     {
       id: 2,
@@ -60,7 +60,7 @@ export default function HeroSection() {
   const language = useLanguage();
   const slides = getSlides(language);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [popupImage, setPopupImage] = useState<string | null>(null);
+
   const swiperRef = useRef<SwiperType | null>(null);
 
   const totalSlides = slides.length;
@@ -168,31 +168,7 @@ export default function HeroSection() {
           {slides.map(slide => (
             <SwiperSlide key={slide.id}>
               <div className="w-full h-full relative aspect-[7680/2320] max-[459px]:aspect-[1440/2080] overflow-hidden box-sizing-border-box">
-                {slide.id === 1 ? (
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setPopupImage(
-                        '/images/HomePage/popup_image/sollal_popup_image.png',
-                      )
-                    }
-                    className="block w-full h-full p-0 border-0 bg-transparent cursor-pointer"
-                  >
-                    <picture>
-                      <source
-                        srcSet={slide.mobileImage}
-                        media="(max-width: 459px)"
-                      />
-                      <Image
-                        src={slide.image}
-                        alt={slide.alt}
-                        fill
-                        className="object-cover"
-                        priority={slide.id === 1}
-                      />
-                    </picture>
-                  </button>
-                ) : slide.link ? (
+                {slide.link ? (
                   <a
                     href={slide.link}
                     target="_blank"
@@ -214,21 +190,19 @@ export default function HeroSection() {
                     </picture>
                   </a>
                 ) : (
-                  <>
-                    <picture>
-                      <source
-                        srcSet={slide.mobileImage}
-                        media="(max-width: 459px)"
-                      />
-                      <Image
-                        src={slide.image}
-                        alt={slide.alt}
-                        fill
-                        className="object-cover"
-                        priority={slide.id === 2}
-                      />
-                    </picture>
-                  </>
+                  <picture>
+                    <source
+                      srcSet={slide.mobileImage}
+                      media="(max-width: 459px)"
+                    />
+                    <Image
+                      src={slide.image}
+                      alt={slide.alt}
+                      fill
+                      className="object-cover"
+                      priority={slide.id === 1}
+                    />
+                  </picture>
                 )}
               </div>
             </SwiperSlide>
@@ -236,33 +210,6 @@ export default function HeroSection() {
         </Swiper>
       </div>
 
-      {popupImage && (
-        <div
-          className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center px-4"
-          onClick={() => setPopupImage(null)}
-        >
-          <div
-            className="relative w-[min(92vw,960px)] h-[min(90vh,760px)]"
-            onClick={e => e.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setPopupImage(null)}
-              aria-label="Close popup"
-              className="absolute top-2 right-2 z-10 h-9 w-9 rounded-full bg-black/60 text-white text-2xl leading-none flex items-center justify-center"
-            >
-              ×
-            </button>
-            <Image
-              src={popupImage}
-              alt="Sollal popup image"
-              fill
-              className="object-contain"
-              sizes="(max-width: 768px) 92vw, 960px"
-            />
-          </div>
-        </div>
-      )}
     </section>
   );
 }
